@@ -4,7 +4,7 @@
   "description": "Frontend with TailwindCSS for the Expense Tracker app",
   "main": "server.js",
   "scripts": {
-    "dev": "next",
+    "dev": "babel-node src/server.js",
     "build": "next build",
     "start": "next start"
   },
