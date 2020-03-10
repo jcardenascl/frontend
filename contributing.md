@@ -24,7 +24,7 @@ Creating an issue is the simplest form of contributing to a project. But there a
 
 If you'd like to learn more about contributing in general, the [Guide to Idiomatic Contributing](https://github.com/jonschlinkert/idiomatic-contributing) has a lot of useful information.
 
-**Showing support for expense-tracker-frontend**
+**Showing support for Expense Tracker Frontend**
 
 Please keep in mind that open source software is built by people like you, who spend their free time creating things the rest the community can use.
 
