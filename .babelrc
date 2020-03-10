@@ -1,0 +1,30 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          // "@actions": "./src/components/actions",
+          // "@apollo-client": "./src/lib/apollo.js",
+          // "@config": "./config",
+          // "@utils": "./src/utils",
+          // "@propTypes": "./src/propTypes",
+          // "@contexts": "./src/contexts",
+          // "@graphql": "./src/graphql",
+          // "@icons": "./src/icons",
+          // "@components": "./src/components",
+          // "@modules": "./src/modules",
+          // "@lib": "./src/lib",
+          // "@middlewares": "./src/lib/middlewares",
+          // "@pages": "./src/pages",
+          // "@schemas": "./src/schemas",
+          // "@users": "./src/pages/users",
+          // "@validations": "./src/validations"
+          "@styles": "./src/styles"
+        }
+      }
+    ]
+  ]
+}
