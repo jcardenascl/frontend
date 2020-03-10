@@ -17,7 +17,7 @@
           // "@components": "./src/components",
           // "@modules": "./src/modules",
           "@lib": "./src/lib",
-          // "@middlewares": "./src/lib/middlewares",
+          "@middlewares": "./src/lib/middlewares",
           // "@pages": "./src/pages",
           // "@schemas": "./src/schemas",
           // "@users": "./src/pages/users",

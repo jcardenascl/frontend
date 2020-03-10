@@ -48,6 +48,8 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "fogg-utils": "^1.1.9",
+    "jsonwebtoken": "^8.5.1",
     "next": "^9.3.0",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.13.1",
