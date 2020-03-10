@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 export default {
   serverPort: 3000,
   appName: "Expense Tracker",
