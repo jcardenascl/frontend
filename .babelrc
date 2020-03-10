@@ -9,7 +9,7 @@
           // "@actions": "./src/components/actions",
           "@apollo-client": "./src/lib/apollo.js",
           "@config": "./src/config",
-          // "@utils": "./src/utils",
+          "@utils": "./src/utils",
           // "@propTypes": "./src/propTypes",
           // "@contexts": "./src/contexts",
           // "@graphql": "./src/graphql",

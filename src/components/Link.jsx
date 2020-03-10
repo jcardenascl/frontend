@@ -6,10 +6,10 @@ import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 
 const NextComposed = React.forwardRef(function NextComposed(props, ref) {
-  const { as, href, prefetch, children, ...other } = props;
+  const { as, href, children, ...other } = props;
 
   return (
-    <NextLink href={href} prefetch={prefetch} as={as}>
+    <NextLink href={href} as={as}>
       <a ref={ref} {...other}>
         {children || <span className="sr-only">Anchor tag</span>}
       </a>
@@ -18,14 +18,12 @@ const NextComposed = React.forwardRef(function NextComposed(props, ref) {
 });
 
 NextComposed.defaultProps = {
-  as: '',
-  prefetch: true
+  as: ''
 };
 
 NextComposed.propTypes = {
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   href: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-  prefetch: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
@@ -59,8 +57,7 @@ Link.defaultProps = {
   as: '',
   className: '',
   innerRef: {},
-  onClick: () => null,
-  prefetch: true
+  onClick: () => null
 };
 
 Link.propTypes = {
@@ -69,8 +66,7 @@ Link.propTypes = {
   className: PropTypes.string,
   href: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-  onClick: PropTypes.func,
-  prefetch: PropTypes.bool
+  onClick: PropTypes.func
 };
 
 export default React.forwardRef((props, ref) => (
