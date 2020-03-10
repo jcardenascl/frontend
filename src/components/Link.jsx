@@ -25,7 +25,11 @@ NextComposed.defaultProps = {
 NextComposed.propTypes = {
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   href: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-  prefetch: PropTypes.bool
+  prefetch: PropTypes.bool,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };
 
 // A styled version of the Next.js Link component:
