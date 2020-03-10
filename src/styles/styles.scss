@@ -3,4 +3,10 @@
 @tailwind components;
 /* purgecss end ignore */
 
+html,
+body {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
 @tailwind utilities;

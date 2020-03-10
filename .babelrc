@@ -4,7 +4,7 @@
     [
       "module-resolver",
       {
-        "root": ["./"],
+        "root": ["./src"],
         "alias": {
           // "@actions": "./src/components/actions",
           "@apollo-client": "./src/lib/apollo.js",
@@ -14,7 +14,7 @@
           // "@contexts": "./src/contexts",
           // "@graphql": "./src/graphql",
           // "@icons": "./src/icons",
-          // "@components": "./src/components",
+          "@components": "./src/components",
           // "@modules": "./src/modules",
           "@lib": "./src/lib",
           "@middlewares": "./src/lib/middlewares",
