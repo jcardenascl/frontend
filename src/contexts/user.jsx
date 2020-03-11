@@ -1,6 +1,6 @@
 // Dependencies
 import React, { createContext, useState } from 'react';
-import propTypes from '@propTypes';
+import propTypes from 'prop-types';
 import { useApolloClient } from 'react-apollo-hooks';
 import { useCookies } from 'react-cookie';
 import { getGraphQlError } from 'fogg-utils';
@@ -19,7 +19,7 @@ export const UserContext = createContext({
 
 const UserProvider = ({ children }) => {
   const { mutate } = useApolloClient();
-  const [, setCookie] = useCookies();
+  // const [, setCookie] = useCookies();
   const [user, setUser] = useState();
 
   async function createUser({

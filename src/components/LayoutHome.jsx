@@ -3,11 +3,11 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 // Components
-import { Header } from '.';
+import { HeaderHome } from '.';
 
 const Layout = ({ children }) => (
   <>
-    <Header />
+    <HeaderHome />
 
     <main>{children}</main>
   </>

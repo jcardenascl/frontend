@@ -2,10 +2,10 @@
 import React from 'react';
 
 // Components
-import { Layout, Hero } from '@components';
+import { LayoutHome, Hero } from '@components';
 
 export default () => (
-  <Layout>
+  <LayoutHome>
     <Hero />
-  </Layout>
+  </LayoutHome>
 );
