@@ -38,8 +38,12 @@ const RegisterForm = ({ currentUrl }) => {
   return (
     <div className="container">
       <div className="flex justify-center">
-        <div className="w-full mt-16 transition-all duration-200 sm:mt-24 lg:mt-32 sm:w-3/4 md:w-4/5">
-          <div className="px-12 py-6 rounded shadow">
+        <div className="w-full mt-16 transition-all duration-200 bg-white sm:mt-24 lg:mt-32 sm:w-3/4 md:w-4/5 lg:w-2/5">
+          <div className="px-12 py-6 rounded-lg shadow-md">
+            <h1 className="pb-2 mb-6 text-4xl font-bold text-center text-gray-700 border-b">
+              Register
+            </h1>
+
             {invalidLogin && (
               <div
                 className="relative px-4 py-3 mt-2 mb-4 text-red-700 bg-red-100 border border-red-400 rounded"
@@ -76,7 +80,7 @@ const RegisterForm = ({ currentUrl }) => {
                   First Name
                 </label>
                 <input
-                  className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                  className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-yellow-500 focus:shadow-outline"
                   id="firstName"
                   type="text"
                   placeholder="Jhon"
@@ -92,7 +96,7 @@ const RegisterForm = ({ currentUrl }) => {
                   Last Name
                 </label>
                 <input
-                  className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                  className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-yellow-500 focus:shadow-outline"
                   id="lastName"
                   type="text"
                   placeholder="Doe"
@@ -111,7 +115,7 @@ const RegisterForm = ({ currentUrl }) => {
                   Username
                 </label>
                 <input
-                  className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                  className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-yellow-500 focus:shadow-outline"
                   id="username"
                   type="text"
                   placeholder="jhon_doe"
@@ -127,7 +131,7 @@ const RegisterForm = ({ currentUrl }) => {
                   Email
                 </label>
                 <input
-                  className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                  className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-yellow-500 focus:shadow-outline"
                   id="email"
                   type="email"
                   placeholder="jhon_doe@gmail.com"
@@ -147,7 +151,7 @@ const RegisterForm = ({ currentUrl }) => {
                 </label>
                 <div className="relative">
                   <input
-                    className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                    className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-yellow-500 focus:shadow-outline"
                     id="password"
                     name="password"
                     type={`${showPassword ? 'text' : 'password'}`}
@@ -163,16 +167,11 @@ const RegisterForm = ({ currentUrl }) => {
                     style={{ top: '50%', transform: 'translateY(-50%)' }}
                   >
                     {showPassword ? (
-                      <svg
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        className="w-8 h-8"
-                      >
-                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                      <svg viewBox="0 0 576 512" className="w-8 text-gray-500">
                         <path
-                          fillRule="evenodd"
-                          d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                          clipRule="evenodd"
+                          fill="currentColor"
+                          d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"
+                          className=""
                         />
                       </svg>
                     ) : (
@@ -191,10 +190,10 @@ const RegisterForm = ({ currentUrl }) => {
             <div className="text-center">
               <button
                 type="submit"
-                className="px-6 py-2 capitalize transition-all duration-200 bg-gray-200 rounded shadow hover:bg-gray-300"
+                className="px-6 py-2 text-white capitalize transition-all duration-200 bg-gray-200 bg-yellow-700 rounded shadow hover:bg-yellow-900"
                 onClick={() => handleRegister(values)}
               >
-                iniciar sesión
+                Register
               </button>
             </div>
           </div>
