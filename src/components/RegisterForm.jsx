@@ -7,6 +7,9 @@ import { redirectTo } from 'fogg-utils';
 import { FormContext } from '@contexts/form';
 import { UserContext } from '@contexts/user';
 
+// Components
+import { Alert } from '@components';
+
 const RegisterForm = ({ currentUrl }) => {
   // States
   const [ready, setReady] = useState(false);
@@ -44,32 +47,11 @@ const RegisterForm = ({ currentUrl }) => {
               Register
             </h1>
 
-            {invalidLogin && (
-              <div
-                className="relative px-4 py-3 mt-2 mb-4 text-red-700 bg-red-100 border border-red-400 rounded"
-                role="alert"
-              >
-                <strong className="mr-2 font-bold">Holy smokes!</strong>
-                <span className="block sm:inline">{errorMessage}.</span>
-                <span
-                  className="absolute top-0 bottom-0 right-0 visible px-4 py-3"
-                  role="button"
-                  tabIndex="0"
-                  onClick={() => setInvalidLogin(false)}
-                  onKeyDown={() => setInvalidLogin(false)}
-                >
-                  <svg
-                    className="w-6 h-6 text-red-500 fill-current"
-                    role="button"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <title>Close</title>
-                    <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
-                  </svg>
-                </span>
-              </div>
-            )}
+            <Alert
+              message={errorMessage}
+              open={invalidLogin}
+              onClose={setInvalidLogin}
+            />
 
             <div className="flex flex-wrap mb-6 -mx-3">
               <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0">
@@ -82,6 +64,7 @@ const RegisterForm = ({ currentUrl }) => {
                 <input
                   className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-yellow-500 focus:shadow-outline"
                   id="firstName"
+                  name="firstName"
                   type="text"
                   placeholder="Jhon"
                   onChange={handleInputChange}
@@ -98,6 +81,7 @@ const RegisterForm = ({ currentUrl }) => {
                 <input
                   className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-yellow-500 focus:shadow-outline"
                   id="lastName"
+                  name="lastName"
                   type="text"
                   placeholder="Doe"
                   onChange={handleInputChange}
@@ -117,6 +101,7 @@ const RegisterForm = ({ currentUrl }) => {
                 <input
                   className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-yellow-500 focus:shadow-outline"
                   id="username"
+                  name="username"
                   type="text"
                   placeholder="jhon_doe"
                   onChange={handleInputChange}
@@ -133,6 +118,7 @@ const RegisterForm = ({ currentUrl }) => {
                 <input
                   className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-yellow-500 focus:shadow-outline"
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="jhon_doe@gmail.com"
                   onChange={handleInputChange}

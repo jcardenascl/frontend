@@ -23,11 +23,11 @@ const Register = ({
     <UserProvider>
       <FormProvider
         initialValues={{
-          firstName: '',
-          lastName: '',
-          username: '',
-          email: '',
-          password: ''
+          firstName: 'Daniel',
+          lastName: 'Esteves',
+          username: 'danestves',
+          email: 'estevesd8@gmail.com',
+          password: '12345678'
         }}
       >
         <Layout>

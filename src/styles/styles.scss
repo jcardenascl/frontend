@@ -9,4 +9,13 @@ body {
   margin: 0 auto;
 }
 
+[role='alert'] {
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+[role='alert'].open {
+  transform: scaleY(1);
+}
+
 @tailwind utilities;
