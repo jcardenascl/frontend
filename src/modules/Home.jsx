@@ -9,7 +9,8 @@ const Home = ({ action, user }) => {
 };
 
 Home.defaultProps = {
-  action: ''
+  action: '',
+  user: {}
 };
 
 Home.propTypes = {
@@ -19,7 +20,7 @@ Home.propTypes = {
     username: propTypes.string,
     email: propTypes.string,
     token: propTypes.string
-  }).isRequired
+  })
 };
 
 export default Home;
