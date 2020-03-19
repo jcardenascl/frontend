@@ -3,6 +3,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import propTypes from 'prop-types';
 import { redirectTo } from 'fogg-utils';
 import { GoogleLogin } from 'react-google-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
 // Contexts
 import { FormContext } from '@contexts/form';
@@ -40,6 +41,10 @@ const RegisterForm = ({ currentUrl }) => {
   };
 
   const responseGoogle = response => {
+    console.log(response);
+  };
+
+  const responseFacebook = response => {
     console.log(response);
   };
 
@@ -89,19 +94,26 @@ const RegisterForm = ({ currentUrl }) => {
                 cookiePolicy="single_host_origin"
               />
 
-              <button
-                type="button"
-                className="flex items-center justify-center w-full px-4 py-3 text-xs font-semibold tracking-wider text-white uppercase rounded facebook"
-              >
-                <svg
-                  className="w-4 h-4 mr-2"
-                  fill="currentColor"
-                  viewBox="0 0 155.139 155.139"
-                >
-                  <path d="M89.584 155.139V84.378h23.742l3.562-27.585H89.584V39.184c0-7.984 2.208-13.425 13.67-13.425l14.595-.006V1.08C115.325.752 106.661 0 96.577 0 75.52 0 61.104 12.853 61.104 36.452v20.341H37.29v27.585h23.814v70.761h28.48z" />
-                </svg>
-                Facebook
-              </button>
+              <FacebookLogin
+                appId="3084537424910860"
+                render={renderProps => (
+                  <button
+                    type="button"
+                    className="flex items-center justify-center w-full px-4 py-3 text-xs font-semibold tracking-wider text-white uppercase rounded facebook"
+                    onClick={renderProps.onClick}
+                  >
+                    <svg
+                      className="w-4 h-4 mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 155.139 155.139"
+                    >
+                      <path d="M89.584 155.139V84.378h23.742l3.562-27.585H89.584V39.184c0-7.984 2.208-13.425 13.67-13.425l14.595-.006V1.08C115.325.752 106.661 0 96.577 0 75.52 0 61.104 12.853 61.104 36.452v20.341H37.29v27.585h23.814v70.761h28.48z" />
+                    </svg>
+                    Facebook
+                  </button>
+                )}
+                callback={res => responseFacebook(res)}
+              />
 
               <button
                 type="button"
