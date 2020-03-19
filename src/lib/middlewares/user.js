@@ -20,7 +20,12 @@ export const isConnected = (isLogged = true, redirectTo = '/') => (
     if (!user && !isLogged) {
       return next();
     }
-    res.redirect(redirectTo);
+
+    if (user && isLogged) {
+      return next();
+    }
+
+    return res.redirect(redirectTo);
   });
 };
 

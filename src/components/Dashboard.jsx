@@ -30,7 +30,7 @@ const Dashboard = props => {
     <>
       <Header />
 
-      <div className="container">
+      <div className="container mt-24">
         <div className="flex flex-wrap">
           <div className="w-full p-2 transition-all duration-200 md:w-1/5">
             <div className="flex justify-center">

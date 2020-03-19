@@ -10,8 +10,7 @@ import { getUserData } from '@lib/jwt';
 import CREATE_USER_MUTATION from '@graphql/user/user.mutation';
 import GOOGLE_MUTATION from '@graphql/user/googleAuth.mutation';
 import FACEBOOK_MUTATION from '@graphql/user/facebookAuth.mutation';
-
-// import LOGIN_MUTATION from '@graphql/user/login.mutation';
+import LOGIN_MUTATION from '@graphql/user/login.mutation';
 
 export const UserContext = createContext({
   createUser: () => undefined,
@@ -71,30 +70,30 @@ const UserProvider = ({ children }) => {
   // Fetch user
   getUser();
 
-  // async function login({ email, password }) {
-  //   let token;
+  async function login({ email, password }) {
+    let token;
 
-  //   try {
-  //     const { data } = await mutate({
-  //       mutation: LOGIN_MUTATION,
-  //       variables: {
-  //         email,
-  //         password
-  //       }
-  //     });
+    try {
+      const { data } = await mutate({
+        mutation: LOGIN_MUTATION,
+        variables: {
+          email,
+          password
+        }
+      });
 
-  //     if (data) {
-  //       setCookie('at', data.login.token, { path: '/' });
-  //       setUser(data.login.token);
+      if (data) {
+        setCookie('at', data.login.token, { path: '/' });
+        setUser(data.login.token);
 
-  //       token = data.login.token;
-  //     }
-  //   } catch (err) {
-  //     return getGraphQlError(err);
-  //   }
+        token = data.login.token;
+      }
+    } catch (err) {
+      return getGraphQlError(err);
+    }
 
-  //   return token;
-  // }
+    return token;
+  }
 
   async function google(accessToken) {
     let token;
@@ -147,7 +146,7 @@ const UserProvider = ({ children }) => {
   const context = {
     createUser,
     getUser,
-    // login,
+    login,
     google,
     facebook,
     user

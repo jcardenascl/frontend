@@ -44,6 +44,10 @@ nextApp.prepare().then(() => {
     return nextApp.render(req, res, '/users/login', req.query);
   });
 
+  app.get('/register', isConnected(false), (req, res) => {
+    return nextApp.render(req, res, '/users/register', req.query);
+  });
+
   app.get('/logout', (req, res) => {
     res.clearCookie('at');
     res.redirect('/');

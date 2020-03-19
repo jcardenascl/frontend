@@ -18,8 +18,6 @@ Home.propTypes = {
     id: propTypes.string,
     username: propTypes.string,
     email: propTypes.string,
-    privilege: propTypes.string,
-    active: propTypes.bool,
     token: propTypes.string
   }).isRequired
 };

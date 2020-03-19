@@ -6,7 +6,7 @@ import { ApolloProvider } from 'react-apollo-hooks';
 import useApolloClient from '@apollo-client';
 
 // Components
-import { DashboardLayout } from '@components';
+import { Dashboard } from '@components';
 
 // Contexts
 import UserProvider from '@contexts/user';
@@ -15,7 +15,7 @@ const Home = props => {
   return (
     <ApolloProvider client={useApolloClient()}>
       <UserProvider>
-        <DashboardLayout {...props} />
+        <Dashboard {...props} />
       </UserProvider>
     </ApolloProvider>
   );
