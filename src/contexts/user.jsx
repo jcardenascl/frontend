@@ -8,18 +8,23 @@ import { getUserData } from '@lib/jwt';
 
 // Mutations
 import CREATE_USER_MUTATION from '@graphql/user/user.mutation';
+import GOOGLE_MUTATION from '@graphql/user/googleAuth.mutation';
+import FACEBOOK_MUTATION from '@graphql/user/facebookAuth.mutation';
+
 // import LOGIN_MUTATION from '@graphql/user/login.mutation';
 
 export const UserContext = createContext({
   createUser: () => undefined,
   getUser: () => undefined,
   login: () => undefined,
+  google: () => undefined,
+  facebook: () => undefined,
   user: {}
 });
 
 const UserProvider = ({ children }) => {
   const { mutate } = useApolloClient();
-  // const [, setCookie] = useCookies();
+  const [, setCookie] = useCookies();
   const [user, setUser] = useState();
 
   async function createUser({
@@ -91,10 +96,60 @@ const UserProvider = ({ children }) => {
   //   return token;
   // }
 
+  async function google({ accessToken }) {
+    let token;
+
+    try {
+      const { data } = await mutate({
+        mutation: GOOGLE_MUTATION,
+        variables: {
+          accessToken
+        }
+      });
+
+      if (data) {
+        setCookie('at', data.googleAuth.token, { path: '/' });
+        setUser(data.googleAuth.token);
+
+        token = data.googleAuth.token;
+      }
+    } catch (err) {
+      return getGraphQlError(err);
+    }
+
+    return token;
+  }
+
+  async function facebook({ accessToken }) {
+    let token;
+
+    try {
+      const { data } = await mutate({
+        mutation: FACEBOOK_MUTATION,
+        variables: {
+          accessToken
+        }
+      });
+
+      if (data) {
+        setCookie('at', data.facebookAuth.token, { path: '/' });
+        setUser(data.facebookAuth.token);
+
+        token = data.facebookAuth.token;
+      }
+    } catch (err) {
+      return getGraphQlError(err);
+    }
+
+    return token;
+  }
+
   const context = {
     createUser,
     getUser,
     // login,
+    google,
+    facebook,
     user
   };
 
