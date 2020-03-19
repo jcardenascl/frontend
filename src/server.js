@@ -51,7 +51,7 @@ nextApp.prepare().then(() => {
 
   app.get(
     '/dashboard/:module?/:action?/:id?',
-    isConnected(true, 'god', '/login?redirectTo=/dashboard/home'),
+    isConnected(true, '/login?redirectTo=/dashboard/home'),
     (req, res) => {
       const { module = 'home' } = req.params;
 

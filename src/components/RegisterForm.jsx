@@ -167,7 +167,7 @@ const RegisterForm = ({ currentUrl }) => {
                   id="firstName"
                   name="firstName"
                   type="text"
-                  placeholder="Jhon"
+                  placeholder="John"
                   onChange={handleInputChange}
                   value={values.firstName}
                 />
@@ -204,7 +204,7 @@ const RegisterForm = ({ currentUrl }) => {
                   id="username"
                   name="username"
                   type="text"
-                  placeholder="jhon_doe"
+                  placeholder="john_doe"
                   onChange={handleInputChange}
                   value={values.username}
                 />
@@ -221,7 +221,7 @@ const RegisterForm = ({ currentUrl }) => {
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="jhon_doe@gmail.com"
+                  placeholder="john_doe@gmail.com"
                   onChange={handleInputChange}
                   value={values.email}
                 />

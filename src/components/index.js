@@ -5,12 +5,16 @@ export { default as Header } from './Header';
 export { default as LayoutHome } from './LayoutHome';
 // eslint-disable-next-line import/no-cycle
 export { default as Layout } from './Layout';
-export { default as Hero } from './Hero';
 
+// Components
 export { default as Link } from './Link';
 
 // Forms
 export { default as RegisterForm } from './RegisterForm';
 
 // Advanced layout
+export { default as Hero } from './Hero';
 export { default as Alert } from './Alert';
+
+// Dashboard
+export { default as Dashboard } from './Dashboard';
