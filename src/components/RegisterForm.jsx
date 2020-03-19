@@ -21,7 +21,7 @@ const RegisterForm = ({ currentUrl }) => {
 
   // Contexts
   const { handleInputChange, values } = useContext(FormContext);
-  const { createUser } = useContext(UserContext);
+  const { createUser, google, facebook } = useContext(UserContext);
 
   // Effects
   useEffect(() => {
@@ -40,12 +40,28 @@ const RegisterForm = ({ currentUrl }) => {
     }
   };
 
-  const responseGoogle = response => {
-    console.log(response);
+  const responseGoogle = async res => {
+    const response = await google(res.accessToken);
+
+    if (response.error) {
+      setInvalidLogin(true);
+      setErrorMessage('Request not successful, please try again');
+    } else {
+      redirectTo(currentUrl || '/');
+    }
   };
 
-  const responseFacebook = response => {
-    console.log(response);
+  const responseFacebook = async res => {
+    if (res) {
+      const response = await facebook(res.accessToken);
+
+      if (response.error) {
+        setInvalidLogin(true);
+        setErrorMessage('Request not successful, please try again');
+      } else {
+        redirectTo(currentUrl || '/');
+      }
+    }
   };
 
   return (

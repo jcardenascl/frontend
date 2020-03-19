@@ -96,7 +96,7 @@ const UserProvider = ({ children }) => {
   //   return token;
   // }
 
-  async function google({ accessToken }) {
+  async function google(accessToken) {
     let token;
 
     try {
@@ -120,7 +120,7 @@ const UserProvider = ({ children }) => {
     return token;
   }
 
-  async function facebook({ accessToken }) {
+  async function facebook(accessToken) {
     let token;
 
     try {
