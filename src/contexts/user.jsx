@@ -4,7 +4,6 @@ import propTypes from 'prop-types';
 import { useApolloClient } from 'react-apollo-hooks';
 import { useCookies } from 'react-cookie';
 import { getGraphQlError } from 'fogg-utils';
-import { getUserData } from '@lib/jwt';
 
 // Queries
 import CURRENT_USER_QUERY from '@graphql/user/currentUser.query';

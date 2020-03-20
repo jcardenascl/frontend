@@ -18,4 +18,6 @@ export { default as Hero } from './Hero';
 export { default as Alert } from './Alert';
 
 // Dashboard
-export { default as Dashboard } from './Dashboard';
+export { default as Dashboard } from './dashboard';
+export { default as Sidebar } from './dashboard/Sidebar';
+export { default as NavbarDashboard } from './dashboard/Navbar';
