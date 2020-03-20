@@ -9,6 +9,12 @@ body {
   margin: 0 auto;
 }
 
+html,
+body,
+#__next {
+  height: 100%;
+}
+
 [role='alert'] {
   transform: scaleY(0);
   transform-origin: top;

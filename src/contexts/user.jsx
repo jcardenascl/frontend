@@ -6,6 +6,9 @@ import { useCookies } from 'react-cookie';
 import { getGraphQlError } from 'fogg-utils';
 import { getUserData } from '@lib/jwt';
 
+// Queries
+import CURRENT_USER_QUERY from '@graphql/user/currentUser.query';
+
 // Mutations
 import CREATE_USER_MUTATION from '@graphql/user/user.mutation';
 import GOOGLE_MUTATION from '@graphql/user/googleAuth.mutation';
@@ -22,8 +25,8 @@ export const UserContext = createContext({
 });
 
 const UserProvider = ({ children }) => {
-  const { mutate } = useApolloClient();
-  const [, setCookie] = useCookies();
+  const { query, mutate } = useApolloClient();
+  const [cookies, setCookie] = useCookies();
   const [user, setUser] = useState();
 
   async function createUser({
@@ -58,17 +61,34 @@ const UserProvider = ({ children }) => {
   }
 
   async function getUser() {
-    const [cookies] = useCookies();
+    let userData;
 
-    const userData = await getUserData(cookies);
+    try {
+      const { data } = await query({
+        query: CURRENT_USER_QUERY
+      });
 
-    if (!user) setUser(userData);
+      if (data) {
+        setUser(data.currentUser);
+
+        userData = data.currentUser;
+      }
+    } catch (err) {
+      return getGraphQlError(err);
+    }
+    // const [cookies] = useCookies();
+
+    // const userData = await getUserData(cookies);
+
+    // if (!user) setUser(userData);
 
     return userData;
   }
 
-  // Fetch user
-  getUser();
+  if (cookies.at) {
+    // Fetch user
+    getUser();
+  }
 
   async function login({ email, password }) {
     let token;

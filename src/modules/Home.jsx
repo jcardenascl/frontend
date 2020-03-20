@@ -3,7 +3,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 const Home = ({ action, user }) => {
-  console.log(action, user);
+  //console.log(action, user);
 
   return <h2>Dashboard Home</h2>;
 };

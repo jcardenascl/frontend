@@ -5,15 +5,26 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloLink } from 'apollo-link';
 import { ErrorLink } from 'apollo-link-error';
+import { setContext } from 'apollo-link-context';
 
 // Configuration
 import config from '@config';
 
-export default () => {
+export default token => {
   const httpLink = new HttpLink({
     uri: config.api.uri,
     credentials: config.api.credentials,
     fetch
+  });
+
+  const authLink = setContext((_, { headers }) => {
+    // return the headers to the context so httpLink can read them
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    };
   });
 
   // eslint-disable-next-line no-console
@@ -28,7 +39,7 @@ export default () => {
 
   const client = new ApolloClient({
     connectToDevTools: true,
-    link: ApolloLink.from([errorLink, httpLink]),
+    link: authLink.concat(ApolloLink.from([errorLink, httpLink])),
     cache
   });
 
