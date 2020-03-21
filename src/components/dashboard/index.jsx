@@ -5,7 +5,7 @@ import { getModuleInfo, isBrowser } from 'fogg-utils';
 import { document } from 'browser-monads';
 
 // Componentes
-import { Sidebar, NavbarDashboard } from '@components';
+import { Sidebar, NavbarDashboard, Fade } from '@components';
 
 // Modules
 import { Home, Transactions } from '@modules';
@@ -63,31 +63,39 @@ const Dashboard = () => {
             <NavbarDashboard user={user} />
 
             <div className="grid grid-cols-1 gap-8 mb-48 md:grid-cols-2 lg:grid-cols-3">
-              <div className="px-6 py-4 bg-white rounded-lg shadow">
-                <h3 className="text-sm font-bold text-gray-500 uppercase">
-                  Salary
-                </h3>
+              <Fade>
+                <div className="px-6 py-4 bg-white rounded-lg shadow">
+                  <h3 className="text-sm font-bold text-gray-500 uppercase">
+                    Salary
+                  </h3>
 
-                <span className="text-3xl text-blue-500">
-                  {user && formatMoney('USD', user.salary)}
-                </span>
-              </div>
-              <div className="px-6 py-4 bg-white rounded-lg shadow">
-                <h3 className="text-sm font-bold text-gray-500 uppercase">
-                  Loads
-                </h3>
-                <span className="text-3xl text-green-500" data-loads>
-                  Loading
-                </span>
-              </div>
-              <div className="px-6 py-4 bg-white rounded-lg shadow">
-                <h3 className="text-sm font-bold text-gray-500 uppercase">
-                  Outflows
-                </h3>
-                <span className="text-3xl text-red-500" data-outflows>
-                  Loading
-                </span>
-              </div>
+                  <span className="text-3xl text-blue-500">
+                    {user && formatMoney('USD', user.salary)}
+                  </span>
+                </div>
+              </Fade>
+
+              <Fade>
+                <div className="px-6 py-4 bg-white rounded-lg shadow">
+                  <h3 className="text-sm font-bold text-gray-500 uppercase">
+                    Loads
+                  </h3>
+                  <span className="text-3xl text-green-500" data-loads>
+                    Loading
+                  </span>
+                </div>
+              </Fade>
+
+              <Fade>
+                <div className="px-6 py-4 bg-white rounded-lg shadow">
+                  <h3 className="text-sm font-bold text-gray-500 uppercase">
+                    Outflows
+                  </h3>
+                  <span className="text-3xl text-red-500" data-outflows>
+                    Loading
+                  </span>
+                </div>
+              </Fade>
             </div>
           </div>
 
