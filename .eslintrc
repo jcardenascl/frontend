@@ -10,7 +10,8 @@
     "navigator": false,
     "window": false,
     "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
+    "SharedArrayBuffer": "readonly",
+    "IntersectionObserver": false
   },
   "parser": "babel-eslint",
   "parserOptions": {

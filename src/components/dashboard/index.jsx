@@ -62,7 +62,7 @@ const Dashboard = () => {
           <div className="p-4 text-white bg-yellow-900">
             <NavbarDashboard user={user} />
 
-            <div className="grid grid-cols-1 gap-8 mb-32 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 mb-48 md:grid-cols-2 lg:grid-cols-3">
               <div className="px-6 py-4 bg-white rounded-lg shadow">
                 <h3 className="text-sm font-bold text-gray-500 uppercase">
                   Salary

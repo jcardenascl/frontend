@@ -17,6 +17,8 @@ export { default as RegisterForm } from './RegisterForm';
 export { default as Hero } from './Hero';
 export { default as Alert } from './Alert';
 export { default as Table } from './Table';
+export { default as Pagination } from './Pagination';
+export { default as Fade } from './Fade';
 
 // Dashboard
 export { default as Dashboard } from './dashboard';

@@ -9,10 +9,11 @@ import { PencilOutlineMd, TrashOutlineMd } from 'react-heroicons';
 import randomId from '@utils/randomId';
 
 const Table = ({ data }) => {
+  // Props
   const { caption, head, body, rows, count, actions = null } = data;
 
   return (
-    <table className="w-full -mt-24 overflow-hidden bg-white border-collapse rounded-md shadow">
+    <table className="w-full -mt-40 overflow-hidden bg-white border-collapse rounded-md shadow">
       <caption className="relative px-10 py-4 text-2xl text-left text-gray-700 capitalize bg-white border border-b-0">
         <div className="float-left">{caption}</div>
         <div className="float-right">
@@ -62,7 +63,7 @@ const Table = ({ data }) => {
                 return (
                   <td
                     key={`tr-${randomId()}`}
-                    className="max-w-xs p-6 text-lg text-center truncate"
+                    className="max-w-xs px-6 py-3 text-lg text-center truncate"
                   >
                     {values}
                   </td>
@@ -73,7 +74,7 @@ const Table = ({ data }) => {
                 return (
                   <td
                     key={`tr-${randomId()}`}
-                    className="max-w-xs p-6 text-lg text-center truncate"
+                    className="max-w-xs px-6 py-3 text-lg text-center truncate"
                   >
                     {moment(row[parent]).format('MM/DD/YYYY')}
                   </td>
@@ -83,7 +84,7 @@ const Table = ({ data }) => {
               return (
                 <td
                   key={`tr-${randomId()}`}
-                  className="max-w-xs p-6 text-lg text-center truncate"
+                  className="max-w-xs px-6 py-3 text-lg text-center truncate"
                 >
                   {row[parent].toString()}
                 </td>
@@ -91,7 +92,7 @@ const Table = ({ data }) => {
             })}
 
             {actions && row.id && (
-              <td className="flex items-center justify-center max-w-xs p-6 text-lg truncate">
+              <td className="flex items-center justify-center max-w-xs px-6 py-3 text-lg truncate">
                 {actions.edit && (
                   <a
                     href={`${actions.edit}/${row.id}`}

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 
 // Components
-import { Table } from '@components';
+import { Fade, Table, Pagination } from '@components';
 
 const Read = ({ read, page, module, head, body, caption }) => {
   // States
@@ -11,8 +11,8 @@ const Read = ({ read, page, module, head, body, caption }) => {
   const [data, setData] = useState([]);
 
   // Methods
-  const fetchData = async () => {
-    const res = await read(Number(page));
+  const fetchData = async pageNumber => {
+    const res = await read(Number(pageNumber));
 
     setCount(res.count);
     setData(res.data);
@@ -20,7 +20,7 @@ const Read = ({ read, page, module, head, body, caption }) => {
 
   // Effects
   useEffect(() => {
-    fetchData();
+    fetchData(page);
   }, [data, page]);
 
   // Render
@@ -40,13 +40,17 @@ const Read = ({ read, page, module, head, body, caption }) => {
 
   return (
     <>
-      <Table data={tableData} module={module} page={page} />
+      <Fade>
+        <Table data={tableData} module={module} page={page} />
+      </Fade>
 
-      {/* <Pagination
-        page={page}
-        total={count}
-        url={`/dashboard/${module}?page=`}
-      /> */}
+      <Fade>
+        <Pagination
+          page={page}
+          total={count}
+          url={`/dashboard/${module}?page=`}
+        />
+      </Fade>
     </>
   );
 };
