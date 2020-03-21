@@ -18,8 +18,8 @@ const Home = ({ action = 'read', user, id = null, page }) => {
         module="transactions"
         caption="Transactions"
         read={readTransactions}
-        head={['Description', 'Ammount', 'Currency']}
-        body={['description', 'ammount', 'currency']}
+        head={['Description', 'Ammount', 'Currency', 'Created At']}
+        body={['description', 'ammount', 'currency', 'createdAt']}
         page={page}
       />
     );
@@ -30,8 +30,8 @@ const Home = ({ action = 'read', user, id = null, page }) => {
       module="transactions"
       caption="Transactions"
       read={readTransactions}
-      head={['Description', 'Ammount', 'Currency']}
-      body={['description', 'ammount', 'currency']}
+      head={['Description', 'Ammount', 'Currency', 'Created At']}
+      body={['description', 'ammount', 'currency', 'createdAt']}
       page={page}
     />
   );
@@ -40,7 +40,8 @@ const Home = ({ action = 'read', user, id = null, page }) => {
 Home.defaultProps = {
   action: '',
   user: {},
-  id: ''
+  id: '',
+  page: 1
 };
 
 Home.propTypes = {
@@ -52,7 +53,7 @@ Home.propTypes = {
     token: propTypes.string
   }),
   id: propTypes.string,
-  page: propTypes.number.isRequired
+  page: propTypes.number
 };
 
 export default Home;

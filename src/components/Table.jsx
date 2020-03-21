@@ -76,7 +76,7 @@ const Table = ({ data }) => {
                     key={`tr-${randomId()}`}
                     className="max-w-xs px-6 py-3 text-lg text-center truncate"
                   >
-                    {moment(row[parent]).format('MM/DD/YYYY')}
+                    {moment(row[parent]).format('MMMM Do YYYY')}
                   </td>
                 );
               }

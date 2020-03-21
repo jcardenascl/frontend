@@ -96,12 +96,16 @@ const Navbar = ({ user }) => {
   );
 };
 
+Navbar.defaultProps = {
+  user: {}
+};
+
 Navbar.propTypes = {
   user: propTypes.shape({
     firstName: propTypes.string,
     lastName: propTypes.string,
     avatar: propTypes.string
-  }).isRequired
+  })
 };
 
 export default Navbar;
