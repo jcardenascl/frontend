@@ -6,7 +6,7 @@
       {
         "root": ["./src"],
         "alias": {
-          // "@actions": "./src/components/actions",
+          "@actions": "./src/components/actions",
           "@apollo-client": "./src/lib/apollo.js",
           "@config": "./src/config",
           "@utils": "./src/utils",

@@ -12,7 +12,8 @@ import GET_TRANSACTIONS_QUERY from '@graphql/transactions/transactions.query';
 import CREATE_TRANSACTION_MUTATION from '@graphql/user/user.mutation';
 
 export const TransactionContext = createContext({
-  createTransaction: () => undefined
+  createTransaction: () => undefined,
+  readTransactions: () => undefined
 });
 
 const TransactionProvider = ({ children }) => {

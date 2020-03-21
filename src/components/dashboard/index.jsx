@@ -8,7 +8,7 @@ import { document } from 'browser-monads';
 import { Sidebar, NavbarDashboard } from '@components';
 
 // Modules
-import { Home } from '@modules';
+import { Home, Transactions } from '@modules';
 
 // Contexts
 import { UserContext } from '@contexts/user';
@@ -92,8 +92,9 @@ const Dashboard = () => {
           </div>
 
           <div className="flex flex-wrap">
-            <div className="w-full px-2 py-4 transition-all duration-200 md:w-4/5">
+            <div className="w-full px-5 py-4 transition-all duration-200">
               {module === 'home' && <Home {...moduleProps} />}
+              {module === 'transactions' && <Transactions {...moduleProps} />}
             </div>
           </div>
         </div>

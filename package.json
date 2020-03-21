@@ -55,6 +55,7 @@
     "fogg-utils": "^1.1.9",
     "graphql": "^14.6.0",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
     "next": "^9.3.0",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.13.1",
@@ -67,6 +68,7 @@
     "react-dom": "^16.13.0",
     "react-facebook-login": "^4.1.1",
     "react-google-login": "^5.1.2",
+    "react-heroicons": "git+https://github.com/codex-src/react-heroicons.git",
     "react-spring": "^8.0.27",
     "tailwindcss": "^1.2.0"
   },

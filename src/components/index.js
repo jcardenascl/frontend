@@ -16,6 +16,7 @@ export { default as RegisterForm } from './RegisterForm';
 // Advanced layout
 export { default as Hero } from './Hero';
 export { default as Alert } from './Alert';
+export { default as Table } from './Table';
 
 // Dashboard
 export { default as Dashboard } from './dashboard';
