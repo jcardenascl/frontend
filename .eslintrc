@@ -26,7 +26,8 @@
     "plugin:react/recommended",
     "airbnb",
     "plugin:prettier/recommended",
-    "prettier/react"
+    "prettier/react",
+    "plugin:jest/recommended"
   ],
   "rules": {
     "accessor-pairs": 2,
