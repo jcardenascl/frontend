@@ -57,21 +57,6 @@ npm test -- --watch
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/expensetrackerofficial/frontend/issues). You can also take a look at the [contributing guide](https://github.com/expensetrackerofficial/frontend/blob/master/contributing.md).
 
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-<a href="https://www.patreon.com/danestves">
-  <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
-</a>
-
-## 📝 License
-
-Copyright © 2020 [Daniel Esteves <estevesd8@gmail.com>](https://github.com/danestves).<br />
-This project is [MIT](https://github.com/expensetrackerofficial/frontend/blob/master/LICENSE) licensed.
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -91,3 +76,19 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+<a href="https://www.patreon.com/danestves">
+  <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
+
+## 📝 License
+
+Copyright © 2020 [Daniel Esteves <estevesd8@gmail.com>](https://github.com/danestves).<br />
+This project is [MIT](https://github.com/expensetrackerofficial/frontend/blob/master/LICENSE) licensed.
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
