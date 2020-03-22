@@ -2,11 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 import { format } from 'date-fns';
-import { PencilOutlineMd, TrashOutlineMd } from 'react-heroicons';
+import { PencilOutlineMd } from 'react-heroicons';
 import Tippy from '@tippyjs/react';
 
 // Components
-import { Fade, Pagination, CreateTransactionModal } from '@components';
+import {
+  Fade,
+  Pagination,
+  CreateTransactionModal,
+  DeleteTransactionModal
+} from '@components';
 
 // Utils
 import formatMoney from '@utils/money';
@@ -78,27 +83,18 @@ const Read = ({ read, page, module, caption }) => {
                     <a
                       href={`/dashboard/${module}/update/${item.id}`}
                       title="Edit"
-                      className="block p-3 mx-2 text-gray-700 transition-all duration-200 border rounded-full cursor-pointer hover:text-gray-600"
+                      className="block p-3 mx-2 text-gray-700 transition-all duration-200 border rounded-full cursor-pointer focus:outline-none focus:shadow-outline hover:text-gray-600"
                     >
                       <PencilOutlineMd className="w-5 h-5" />
                     </a>
                   </Tippy>
 
-                  <Tippy content="Delete">
-                    <button
-                      type="button"
-                      title="Delete"
-                      className="p-3 mx-2 text-gray-700 transition-all duration-200 border rounded-full cursor-pointer hover:text-gray-600"
-                      onClick={() => {
-                        // eslint-disable-next-line
-                        if (confirm('Do you want to delete this row?')) {
-                          window.location = `/dashboard/${module}/delete/${item.id}`;
-                        }
-                      }}
-                    >
-                      <TrashOutlineMd className="w-5 h-5" />
-                    </button>
-                  </Tippy>
+                  <DeleteTransactionModal
+                    id={item.id}
+                    title={item.description}
+                    page={page}
+                    fetchData={fetchData}
+                  />
                 </div>
               </div>
             </div>

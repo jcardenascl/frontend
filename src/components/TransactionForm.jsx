@@ -96,7 +96,6 @@ const TransactionForm = ({ setOpenModal }) => {
   };
 
   const handleCreate = async transaction => {
-    console.log(transaction);
     const response = await createTransaction(transaction);
 
     if (response.error) {

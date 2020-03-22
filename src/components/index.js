@@ -21,6 +21,7 @@ export { default as Table } from './Table';
 export { default as Pagination } from './Pagination';
 export { default as Fade } from './Fade';
 export { default as CreateTransactionModal } from './CreateTransactionModal';
+export { default as DeleteTransactionModal } from './DeleteTransactionModal';
 
 // Dashboard
 export { default as Dashboard } from './dashboard';

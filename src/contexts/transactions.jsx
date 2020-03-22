@@ -10,6 +10,7 @@ import GET_TRANSACTIONS_QUERY from '@graphql/transactions/transactions.query';
 
 // Mutations
 import CREATE_TRANSACTION_MUTATION from '@graphql/transactions/transaction.mutation';
+import DELETE_TRANSACTION_MUTATION from '@graphql/transactions/deleteTransaction.mutation';
 
 export const TransactionContext = createContext({
   createTransaction: () => undefined,
@@ -72,9 +73,31 @@ const TransactionProvider = ({ children }) => {
     };
   }
 
+  async function deleteTransaction(id, page) {
+    let transaction;
+
+    try {
+      const { data } = await mutate({
+        mutation: DELETE_TRANSACTION_MUTATION,
+        variables: {
+          id
+        }
+      });
+
+      if (data) {
+        transaction = data.deleteTransaction;
+      }
+    } catch (err) {
+      return getGraphQlError(err);
+    }
+
+    return transaction;
+  }
+
   const context = {
     createTransaction,
     readTransactions,
+    deleteTransaction,
     transactions
   };
 
