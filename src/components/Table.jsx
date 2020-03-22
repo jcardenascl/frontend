@@ -1,7 +1,7 @@
 // Dependencies
 import React from 'react';
 import { window } from 'browser-monads';
-import moment from 'moment';
+import { format } from 'date-fns';
 import propTypes from 'prop-types';
 import { PencilOutlineMd, TrashOutlineMd } from 'react-heroicons';
 
@@ -76,7 +76,7 @@ const Table = ({ data }) => {
                     key={`tr-${randomId()}`}
                     className="max-w-xs px-6 py-3 text-lg text-center truncate"
                   >
-                    {moment(row[parent]).format('MMMM Do YYYY')}
+                    {format(new Date(row[parent]), 'MMM do yyyy')}
                   </td>
                 );
               }
