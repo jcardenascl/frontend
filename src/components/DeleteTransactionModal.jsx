@@ -11,7 +11,7 @@ import { TransactionContext } from '@contexts/transactions';
 // Components
 import { Alert } from '@components';
 
-const Transaction = ({ id, title }) => {
+const Transaction = ({ id, title, fetchData }) => {
   // States
   const [openDelete, setDelete] = useState(false);
   const [text, setText] = useState('');
@@ -35,6 +35,7 @@ const Transaction = ({ id, title }) => {
     } else {
       setText('');
       setDelete(false);
+      fetchData();
     }
   };
 
@@ -110,7 +111,8 @@ const Transaction = ({ id, title }) => {
 
 Transaction.propTypes = {
   id: propTypes.string.isRequired,
-  title: propTypes.string.isRequired
+  title: propTypes.string.isRequired,
+  fetchData: propTypes.func.isRequired
 };
 
 export default Transaction;

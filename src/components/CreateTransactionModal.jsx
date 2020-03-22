@@ -13,8 +13,8 @@ const Transaction = ({ open, setOpen }) => (
   <BottomModal isOpen={open} onRequestClose={() => setOpen(false)}>
     <FormProvider
       initialValues={{
-        description: '',
-        ammount: '',
+        description: 'Cinema',
+        ammount: '400',
         currency: 'USD'
       }}
     >

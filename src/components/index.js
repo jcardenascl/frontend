@@ -23,6 +23,7 @@ export { default as Fade } from './Fade';
 export { default as CreateTransactionModal } from './CreateTransactionModal';
 export { default as DeleteTransactionModal } from './DeleteTransactionModal';
 export { default as Loading } from './Loading';
+export { default as Toast } from './Toast';
 
 // Dashboard
 export { default as Dashboard } from './dashboard';

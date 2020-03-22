@@ -2,13 +2,14 @@
 import React, { useState, useContext } from 'react';
 import Select from 'react-select';
 import propTypes from 'prop-types';
+import toaster from 'toasted-notes';
 
 // Contexts
 import { FormContext } from '@contexts/form';
 import { TransactionContext } from '@contexts/transactions';
 
 // Components
-import { Alert } from '@components';
+import { Alert, Toast } from '@components';
 
 const options = [
   { value: 'USD', label: 'USD', selected: true },
@@ -95,7 +96,9 @@ const TransactionForm = ({ setOpenModal }) => {
     handleInputChange({ target: { name: action.name, value: value.value } });
   };
 
-  const handleCreate = async transaction => {
+  const handleCreate = async (e, transaction) => {
+    e.preventDefault();
+
     const response = await createTransaction(transaction);
 
     if (response.error) {
@@ -104,6 +107,18 @@ const TransactionForm = ({ setOpenModal }) => {
     } else {
       clearValues(['description', 'ammount', 'currency']);
       setOpenModal(false);
+
+      toaster.notify(
+        <Toast
+          type="success"
+          title="Successfully created"
+          text={response.description}
+        />,
+        {
+          position: 'bottom-right',
+          duration: 5000
+        }
+      );
     }
   };
 
@@ -177,7 +192,7 @@ const TransactionForm = ({ setOpenModal }) => {
         <button
           className="block w-full px-6 py-2 text-white bg-yellow-900 rounded shadow focus:outline-none"
           type="button"
-          onClick={() => handleCreate(values)}
+          onClick={e => handleCreate(e, values)}
         >
           Save
         </button>

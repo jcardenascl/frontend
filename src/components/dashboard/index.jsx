@@ -118,7 +118,9 @@ const Dashboard = () => {
         <div className="flex flex-wrap">
           <div className="w-full px-5 py-4 transition-all duration-200">
             {module === 'home' && <Home {...moduleProps} />}
-            {module === 'transactions' && <Transactions {...moduleProps} />}
+            <Fade>
+              {module === 'transactions' && <Transactions {...moduleProps} />}
+            </Fade>
           </div>
         </div>
       </Fade>

@@ -26,6 +26,7 @@ const Read = ({ read, page, module, caption }) => {
   // Methods
   const fetchData = async () => {
     const res = await read(Number(page));
+    console.log(res);
 
     setCount(res.count);
     setData(res.data);
@@ -34,11 +35,9 @@ const Read = ({ read, page, module, caption }) => {
   // Effects
   useEffect(() => {
     fetchData();
-  }, [data, page]);
+  }, [data, page, isOpen]);
 
   // Render
-  if (data.length === 0) return <Loading spacing="py-16" />;
-
   return (
     <>
       <div className="flex items-center justify-between mb-6">
@@ -58,50 +57,52 @@ const Read = ({ read, page, module, caption }) => {
 
       <hr className="mb-6 border-gray-300" />
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {data.map(item => (
-          <Fade key={item.id}>
-            <div className="px-6 py-4 bg-white rounded-lg shadow">
-              <h2 className="text-sm font-bold text-gray-500 uppercase">
-                {item.description}
-              </h2>
-              <span
-                className={`text-3xl font-medium ${
-                  item.ammount < 0 ? 'text-red-600' : 'text-green-600'
-                }`}
-              >
-                {formatMoney(item.currency, item.ammount)}
-              </span>
+      {data.length !== 0 && (
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {data.map(item => (
+            <Fade key={item.id}>
+              <div className="px-6 py-4 bg-white rounded-lg shadow">
+                <h2 className="text-sm font-bold text-gray-500 uppercase">
+                  {item.description}
+                </h2>
+                <span
+                  className={`text-3xl font-medium ${
+                    item.ammount < 0 ? 'text-red-600' : 'text-green-600'
+                  }`}
+                >
+                  {formatMoney(item.currency, item.ammount)}
+                </span>
 
-              <div className="flex items-center justify-center">
-                <div className="w-1/2">
-                  <span className="text-sm text-gray-500">
-                    {format(new Date(item.createdAt), 'MMM do yyyy')}
-                  </span>
-                </div>
-                <div className="flex justify-end w-1/2">
-                  <Tippy content="Edit">
-                    <a
-                      href={`/dashboard/${module}/update/${item.id}`}
-                      title="Edit"
-                      className="block p-3 mx-2 text-gray-700 transition-all duration-200 border rounded-full cursor-pointer focus:outline-none focus:shadow-outline hover:text-gray-600"
-                    >
-                      <PencilOutlineMd className="w-5 h-5" />
-                    </a>
-                  </Tippy>
+                <div className="flex items-center justify-center">
+                  <div className="w-1/2">
+                    <span className="text-sm text-gray-500">
+                      {format(new Date(item.createdAt), 'MMM do yyyy')}
+                    </span>
+                  </div>
+                  <div className="flex justify-end w-1/2">
+                    <Tippy content="Edit">
+                      <a
+                        href={`/dashboard/${module}/update/${item.id}`}
+                        title="Edit"
+                        className="block p-3 mx-2 text-gray-700 transition-all duration-200 border rounded-full cursor-pointer focus:outline-none focus:shadow-outline hover:text-gray-600"
+                      >
+                        <PencilOutlineMd className="w-5 h-5" />
+                      </a>
+                    </Tippy>
 
-                  <DeleteTransactionModal
-                    id={item.id}
-                    title={item.description}
-                    page={page}
-                    fetchData={fetchData}
-                  />
+                    <DeleteTransactionModal
+                      id={item.id}
+                      title={item.description}
+                      page={page}
+                      fetchData={fetchData}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          </Fade>
-        ))}
-      </div>
+            </Fade>
+          ))}
+        </div>
+      )}
 
       <Fade>
         <Pagination
@@ -111,7 +112,12 @@ const Read = ({ read, page, module, caption }) => {
         />
       </Fade>
 
-      <CreateTransactionModal open={isOpen} setOpen={setOpen} />
+      <CreateTransactionModal
+        open={isOpen}
+        setOpen={setOpen}
+        data={data}
+        setData={setData}
+      />
     </>
   );
 };

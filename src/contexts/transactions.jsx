@@ -43,7 +43,10 @@ const TransactionProvider = ({ children }) => {
       return getGraphQlError(err);
     }
 
-    setTransactions([...transactions, transaction]);
+    setTransactions(state => ({
+      ...state,
+      transaction
+    }));
 
     return transaction;
   }

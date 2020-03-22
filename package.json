@@ -86,11 +86,12 @@
     "react-google-login": "^5.1.2",
     "react-heroicons": "git+https://github.com/codex-src/react-heroicons.git",
     "react-select": "^3.0.8",
-    "react-spring": "^8.0.27",
+    "react-spring": "^9.0.0-beta.34",
     "react-spring-modal": "^1.0.8",
     "sass": "^1.26.3",
     "tailwindcss": "^1.2.0",
-    "tippy.js": "^6.1.0"
+    "tippy.js": "^6.1.0",
+    "toasted-notes": "^3.2.0"
   },
   "resolutions": {
     "minimist": "^1.2.5"
