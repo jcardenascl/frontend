@@ -16,7 +16,22 @@ jest.mock('fogg-utils', () => ({
 jest.mock('@graphql/user/user.mutation', () => 'mutation user()');
 
 describe('User Context Provider', () => {
-  it('should provide create user method and interact with graphql', async() => {
+  const getContextValue = async () => {
+    let contextValue;
+    await render(
+      <UserProvider>
+        <UserContext.Consumer>
+          {value => {
+            contextValue = value;
+            return null;
+          }}
+        </UserContext.Consumer>
+      </UserProvider>
+    );
+    return contextValue;
+  };
+
+  it('should provide create user method and interact with graphql', async () => {
     const responseUserData = {
       user: {
         name: 'Gonzalo',
@@ -31,23 +46,12 @@ describe('User Context Provider', () => {
       mutate
     });
 
-    let createUser = () => {};
-    render(
-      <UserProvider>
-        <UserContext.Consumer>
-          {value => {
-            createUser = value.createUser;
-            return null;
-          }}
-        </UserContext.Consumer>
-      </UserProvider>
-    );
-
     const newUserData = {
       username: 'gpincheiraa',
       email: 'gpincheiraa@react.com',
       password: 'mostSecurePassword'
     };
+    const { createUser } = await getContextValue();
     const userData = await createUser(newUserData);
 
     expect(mutate).toHaveBeenCalledWith({
@@ -70,23 +74,12 @@ describe('User Context Provider', () => {
     });
     getGraphQlError.mockReturnValue(error);
 
-    let createUser = () => {};
-    render(
-      <UserProvider>
-        <UserContext.Consumer>
-          {value => {
-            createUser = value.createUser;
-            return null;
-          }}
-        </UserContext.Consumer>
-      </UserProvider>
-    );
-
     const newUserData = {
       username: 'gpincheiraa',
       email: 'gpincheiraa@react.com',
       password: 'mostSecurePassword'
     };
+    const { createUser } = await getContextValue();
     const userDataError = await createUser(newUserData);
 
     expect(mutate).toHaveBeenCalledWith({
