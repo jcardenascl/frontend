@@ -43,6 +43,8 @@ const TransactionProvider = ({ children }) => {
       return getGraphQlError(err);
     }
 
+    setTransactions([...transactions, transaction]);
+
     return transaction;
   }
 
@@ -73,7 +75,7 @@ const TransactionProvider = ({ children }) => {
     };
   }
 
-  async function deleteTransaction(id, page) {
+  async function deleteTransaction(id) {
     let transaction;
 
     try {

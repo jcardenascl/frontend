@@ -10,21 +10,30 @@ import {
   Fade,
   Pagination,
   CreateTransactionModal,
-  DeleteTransactionModal
+  DeleteTransactionModal,
+  Loading
 } from '@components';
 
 // Utils
 import formatMoney from '@utils/money';
+
+// Hooks
+import { useMounted } from '@hooks';
 
 const Read = ({ read, page, module, caption }) => {
   // States
   const [count, setCount] = useState(0);
   const [data, setData] = useState([]);
   const [isOpen, setOpen] = useState(false);
+  const mounted = useMounted();
 
   // Methods
   const fetchData = async pageNumber => {
-    const res = await read(Number(pageNumber));
+    let res;
+
+    if (mounted) {
+      res = await read(Number(pageNumber));
+    }
 
     setCount(res.count);
     setData(res.data);
@@ -36,7 +45,7 @@ const Read = ({ read, page, module, caption }) => {
   }, [data, page]);
 
   // Render
-  if (data.length === 0) return null;
+  if (data.length === 0) return <Loading />;
 
   return (
     <>
