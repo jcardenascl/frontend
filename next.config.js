@@ -1,8 +1,7 @@
-const withSass = require('@zeit/next-sass');
-const webpack = require('webpack');
+const webpack = require('webpack'); // eslint-disable-line import/no-extraneous-dependencies
 require('dotenv').config();
 
-module.exports = withSass({
+module.exports = {
   webpack: config => {
     // Fixes npm packages that depend on `fs` module
     config.node = {
@@ -23,4 +22,4 @@ module.exports = withSass({
 
     return config;
   }
-});
+};
