@@ -4,17 +4,19 @@ import propTypes from 'prop-types';
 import { format } from 'date-fns';
 import { PencilOutlineMd, TrashOutlineMd } from 'react-heroicons';
 import Tippy from '@tippyjs/react';
+import { BottomModal } from 'react-spring-modal';
 
 // Components
-import { Fade, Link, Pagination } from '@components';
+import { Fade, Pagination } from '@components';
 
 // Utils
 import formatMoney from '@utils/money';
 
-const Read = ({ read, page, module, head, body, caption }) => {
+const Read = ({ read, page, module, caption }) => {
   // States
   const [count, setCount] = useState(0);
   const [data, setData] = useState([]);
+  const [isOpen, setOpen] = useState(false);
 
   // Methods
   const fetchData = async pageNumber => {
@@ -36,15 +38,17 @@ const Read = ({ read, page, module, head, body, caption }) => {
     <>
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-4xl font-medium text-gray-700 capitalize">
-          {module}
+          {caption}
         </h1>
 
-        <Link
-          href={`/dashboard/${module}/create`}
+        <button
+          type="button"
+          // href={`/dashboard/${module}/create`}
           className="block px-6 py-2 text-white bg-yellow-900 rounded-lg shadow"
+          onClick={() => setOpen(!isOpen)}
         >
           Create
-        </Link>
+        </button>
       </div>
 
       <hr className="mb-6 border-gray-300" />
@@ -110,6 +114,10 @@ const Read = ({ read, page, module, head, body, caption }) => {
           url={`/dashboard/${module}?page=`}
         />
       </Fade>
+
+      <BottomModal isOpen={isOpen} onRequestClose={() => setOpen(false)}>
+        <h1>The Modal</h1>
+      </BottomModal>
     </>
   );
 };
@@ -118,8 +126,6 @@ Read.propTypes = {
   caption: propTypes.string.isRequired,
   module: propTypes.string.isRequired,
   read: propTypes.func.isRequired,
-  head: propTypes.oneOfType([propTypes.array.isRequired]).isRequired,
-  body: propTypes.oneOfType([propTypes.array.isRequired]).isRequired,
   page: propTypes.number.isRequired
 };
 export default Read;

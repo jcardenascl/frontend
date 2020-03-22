@@ -18,8 +18,6 @@ const Home = ({ action = 'read', user, id = null, page }) => {
         module="transactions"
         caption="Transactions"
         read={readTransactions}
-        head={['Description', 'Ammount', 'Currency', 'Created At']}
-        body={['description', 'ammount', 'currency', 'createdAt']}
         page={page}
       />
     );
@@ -30,8 +28,6 @@ const Home = ({ action = 'read', user, id = null, page }) => {
       module="transactions"
       caption="Transactions"
       read={readTransactions}
-      head={['Description', 'Ammount', 'Currency', 'Created At']}
-      body={['description', 'ammount', 'currency', 'createdAt']}
       page={page}
     />
   );
