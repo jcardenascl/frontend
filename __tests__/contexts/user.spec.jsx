@@ -1,11 +1,14 @@
+// Dependencies
 import React from 'react';
 import { render } from '@testing-library/react';
 import { useApolloClient } from 'react-apollo-hooks';
 import { getGraphQlError } from 'fogg-utils';
 
-import CREATE_USER_MUTATION from '@graphql/user/user.mutation';
-
+// Contexts
 import UserProvider, { UserContext } from '@contexts/user';
+
+// Mutations
+import CREATE_USER_MUTATION from '@graphql/user/user.mutation';
 
 jest.mock('react-apollo-hooks', () => ({
   useApolloClient: jest.fn()
@@ -16,9 +19,10 @@ jest.mock('fogg-utils', () => ({
 jest.mock('@graphql/user/user.mutation', () => 'mutation user()');
 
 describe('User Context Provider', () => {
-  const getContextValue = async () => {
+  const getContextValue = () => {
     let contextValue;
-    await render(
+
+    render(
       <UserProvider>
         <UserContext.Consumer>
           {value => {
@@ -28,6 +32,7 @@ describe('User Context Provider', () => {
         </UserContext.Consumer>
       </UserProvider>
     );
+
     return contextValue;
   };
 
@@ -41,6 +46,7 @@ describe('User Context Provider', () => {
     const mutate = jest
       .fn()
       .mockReturnValue(Promise.resolve({ data: responseUserData }));
+
     useApolloClient.mockReturnValue({
       query: jest.fn(),
       mutate
@@ -51,7 +57,7 @@ describe('User Context Provider', () => {
       email: 'gpincheiraa@react.com',
       password: 'mostSecurePassword'
     };
-    const { createUser } = await getContextValue();
+    const { createUser } = getContextValue();
     const userData = await createUser(newUserData);
 
     expect(mutate).toHaveBeenCalledWith({
@@ -68,6 +74,7 @@ describe('User Context Provider', () => {
   it('should use getGraphQlError method to return error', async () => {
     const error = new Error();
     const mutate = jest.fn().mockReturnValue(Promise.reject(error));
+
     useApolloClient.mockReturnValue({
       query: jest.fn(),
       mutate
@@ -79,7 +86,7 @@ describe('User Context Provider', () => {
       email: 'gpincheiraa@react.com',
       password: 'mostSecurePassword'
     };
-    const { createUser } = await getContextValue();
+    const { createUser } = getContextValue();
     const userDataError = await createUser(newUserData);
 
     expect(mutate).toHaveBeenCalledWith({
