@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "babel-node src/server.js",
     "build": "next build",
-    "start": "NODE_ENV=production babel-node src/server.js"
+    "start": "NODE_ENV=production babel-node src/server.js",
+    "test": "jest"
   },
   "keywords": [
     "expense",
@@ -16,10 +17,18 @@
     "nextjs"
   ],
   "author": "Daniel Esteves <estevesd8@gmail.com>",
+  "contributors": [
+    {
+      "name": "Gonzalo Pincheira",
+      "email": "g.pincheira.a@gmail.com",
+      "url": "https://github.com/gpincheiraa"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
+    "@testing-library/react": "^10.0.1",
     "babel-eslint": "^10.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-next": "^1.2.0",
@@ -27,9 +36,11 @@
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
+    "jest": "^25.1.0",
     "eslint-plugin-you-dont-need-momentjs": "^1.6.0",
     "nodemon": "^2.0.2",
     "prettier": "^2.0.0"
