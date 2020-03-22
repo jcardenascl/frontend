@@ -17,14 +17,14 @@ export default () => (
           </h3>
 
           <Link
-            href="/login"
             className="px-8 py-3 text-xl text-white transition-all duration-200 bg-yellow-700 rounded-md shadow hover:bg-yellow-900"
+            href="/login"
           >
             Sign up now
           </Link>
         </div>
         <div className="w-full sm:w-1/2 md:w-2/5">
-          <img src="/money.png" alt="Expense Tracker" className="w-full" />
+          <img alt="Expense Tracker" className="w-full" src="/money.png" />
         </div>
       </div>
     </div>

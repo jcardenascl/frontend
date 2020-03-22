@@ -9,7 +9,8 @@ import GET_TRANSACTIONS_COUNT_QUERY from '@graphql/transactions/transactionsCoun
 import GET_TRANSACTIONS_QUERY from '@graphql/transactions/transactions.query';
 
 // Mutations
-import CREATE_TRANSACTION_MUTATION from '@graphql/user/user.mutation';
+import CREATE_TRANSACTION_MUTATION from '@graphql/transactions/transaction.mutation';
+import DELETE_TRANSACTION_MUTATION from '@graphql/transactions/deleteTransaction.mutation';
 
 export const TransactionContext = createContext({
   createTransaction: () => undefined,
@@ -23,12 +24,14 @@ const TransactionProvider = ({ children }) => {
   async function createTransaction({ description, ammount, currency = 'USD' }) {
     let transaction;
 
+    const ammountNumber = parseInt(ammount, 10);
+
     try {
       const { data } = await mutate({
         mutation: CREATE_TRANSACTION_MUTATION,
         variables: {
           description,
-          ammount,
+          ammount: ammountNumber,
           currency
         }
       });
@@ -39,6 +42,11 @@ const TransactionProvider = ({ children }) => {
     } catch (err) {
       return getGraphQlError(err);
     }
+
+    setTransactions(state => ({
+      ...state,
+      transaction
+    }));
 
     return transaction;
   }
@@ -70,9 +78,31 @@ const TransactionProvider = ({ children }) => {
     };
   }
 
+  async function deleteTransaction(id) {
+    let transaction;
+
+    try {
+      const { data } = await mutate({
+        mutation: DELETE_TRANSACTION_MUTATION,
+        variables: {
+          id
+        }
+      });
+
+      if (data) {
+        transaction = data.deleteTransaction;
+      }
+    } catch (err) {
+      return getGraphQlError(err);
+    }
+
+    return transaction;
+  }
+
   const context = {
     createTransaction,
     readTransactions,
+    deleteTransaction,
     transactions
   };
 

@@ -4,6 +4,7 @@
   "description": "Frontend with TailwindCSS for the Expense Tracker app",
   "main": "server.js",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "dev": "babel-node src/server.js",
     "build": "next build",
     "start": "NODE_ENV=production babel-node src/server.js",
@@ -35,20 +36,21 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.10.0",
+    "eslint-import-resolver-node": "^0.3.3",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
-    "jest": "^25.1.0",
     "eslint-plugin-you-dont-need-momentjs": "^1.6.0",
+    "jest": "^25.1.0",
+    "minimist": "^1.2.5",
     "nodemon": "^2.0.2",
     "prettier": "^2.0.0"
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.0",
     "@tippyjs/react": "^4.0.0-alpha.4",
-    "@zeit/next-sass": "^1.0.1",
     "apollo-boost": "^0.4.7",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-link": "^1.2.13",
@@ -72,6 +74,7 @@
     "next": "^9.3.1",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.13.1",
+    "nprogress": "^0.2.0",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.7.0",
     "prop-types": "^15.7.2",
@@ -82,10 +85,16 @@
     "react-facebook-login": "^4.1.1",
     "react-google-login": "^5.1.2",
     "react-heroicons": "git+https://github.com/codex-src/react-heroicons.git",
-    "react-spring": "^8.0.27",
+    "react-select": "^3.0.8",
+    "react-spring": "^9.0.0-beta.34",
     "react-spring-modal": "^1.0.8",
+    "sass": "^1.26.3",
     "tailwindcss": "^1.2.0",
-    "tippy.js": "^6.1.0"
+    "tippy.js": "^6.1.0",
+    "toasted-notes": "^3.2.0"
+  },
+  "resolutions": {
+    "minimist": "^1.2.5"
   },
   "repository": {
     "type": "git",

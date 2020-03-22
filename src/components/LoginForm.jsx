@@ -36,7 +36,7 @@ const LoginForm = ({ currentUrl }) => {
       setInvalidLogin(true);
       setErrorMessage(response.message);
     } else {
-      redirectTo(currentUrl || '/');
+      redirectTo(currentUrl || '/dashboard');
     }
   };
 
@@ -47,7 +47,7 @@ const LoginForm = ({ currentUrl }) => {
       setInvalidLogin(true);
       setErrorMessage('Request not successful, please try again');
     } else {
-      redirectTo(currentUrl || '/');
+      redirectTo(currentUrl || '/dashboard');
     }
   };
 
@@ -59,7 +59,7 @@ const LoginForm = ({ currentUrl }) => {
         setInvalidLogin(true);
         setErrorMessage('Request not successful, please try again');
       } else {
-        redirectTo(currentUrl || '/');
+        redirectTo(currentUrl || '/dashboard');
       }
     }
   };
@@ -75,13 +75,15 @@ const LoginForm = ({ currentUrl }) => {
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               <GoogleLogin
+                buttonText="Login"
                 clientId="1021304788868-4bfpvgk7dqfo10e56k1io56r517nknmi.apps.googleusercontent.com"
+                cookiePolicy="single_host_origin"
                 render={renderProps => (
                   <button
-                    type="button"
                     className="flex items-center justify-center w-full px-4 py-3 text-xs font-semibold tracking-wider text-black uppercase bg-white border rounded"
-                    onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
+                    onClick={renderProps.onClick}
+                    type="button"
                   >
                     <svg className="w-4 h-4 mr-2" viewBox="0 0 533.5 544.3">
                       <path
@@ -104,19 +106,18 @@ const LoginForm = ({ currentUrl }) => {
                     Google
                   </button>
                 )}
-                buttonText="Login"
-                onSuccess={res => responseGoogle(res)}
                 onFailure={res => responseGoogle(res)}
-                cookiePolicy="single_host_origin"
+                onSuccess={res => responseGoogle(res)}
               />
 
               <FacebookLogin
                 appId="3084537424910860"
+                callback={res => responseFacebook(res)}
                 render={renderProps => (
                   <button
-                    type="button"
                     className="flex items-center justify-center w-full px-4 py-3 text-xs font-semibold tracking-wider text-white uppercase rounded facebook"
                     onClick={renderProps.onClick}
+                    type="button"
                   >
                     <svg
                       className="w-4 h-4 mr-2"
@@ -128,7 +129,6 @@ const LoginForm = ({ currentUrl }) => {
                     Facebook
                   </button>
                 )}
-                callback={res => responseFacebook(res)}
               />
 
               <button
@@ -150,8 +150,8 @@ const LoginForm = ({ currentUrl }) => {
 
             <Alert
               message={errorMessage}
-              open={invalidLogin}
               onClose={setInvalidLogin}
+              open={invalidLogin}
             />
 
             <div className="flex flex-wrap mb-6 -mx-3">
@@ -166,9 +166,9 @@ const LoginForm = ({ currentUrl }) => {
                   className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-yellow-500 focus:shadow-outline"
                   id="email"
                   name="email"
-                  type="email"
-                  placeholder="john_doe@gmail.com"
                   onChange={handleInputChange}
+                  placeholder="john_doe@gmail.com"
+                  type="email"
                   value={values.email}
                 />
               </div>
@@ -187,24 +187,23 @@ const LoginForm = ({ currentUrl }) => {
                     className="block w-full px-4 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-yellow-500 focus:shadow-outline"
                     id="password"
                     name="password"
-                    type={`${showPassword ? 'text' : 'password'}`}
-                    placeholder="********"
                     onChange={handleInputChange}
+                    placeholder="********"
+                    type={`${showPassword ? 'text' : 'password'}`}
                     value={values.password}
                   />
 
                   <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-0 mr-6"
+                    onClick={() => setShowPassword(!showPassword)}
                     style={{ top: '50%', transform: 'translateY(-50%)' }}
+                    type="button"
                   >
                     {showPassword ? (
                       <svg viewBox="0 0 576 512" className="w-8 text-gray-500">
                         <path
                           fill="currentColor"
                           d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"
-                          className=""
                         />
                       </svg>
                     ) : (
@@ -222,9 +221,9 @@ const LoginForm = ({ currentUrl }) => {
 
             <div className="text-center">
               <button
-                type="submit"
                 className="px-6 py-2 text-white capitalize transition-all duration-200 bg-gray-200 bg-yellow-700 rounded shadow hover:bg-yellow-900"
                 onClick={() => handleLogin(values)}
+                type="submit"
               >
                 Login
               </button>
@@ -241,8 +240,6 @@ LoginForm.defaultProps = {
 };
 
 LoginForm.propTypes = {
-  // eslint-disable-next-line
-  createUser: propTypes.func,
   currentUrl: propTypes.string
 };
 

@@ -6,10 +6,10 @@ import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 
 const NextComposed = React.forwardRef(function NextComposed(props, ref) {
-  const { as, href, children, ...other } = props;
+  const { as, children, href, ...other } = props;
 
   return (
-    <NextLink href={href} as={as}>
+    <NextLink as={as} href={href}>
       <a ref={ref} {...other}>
         {children || <span className="sr-only">Anchor tag</span>}
       </a>
@@ -23,20 +23,20 @@ NextComposed.defaultProps = {
 
 NextComposed.propTypes = {
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  href: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired
+  ]).isRequired,
+  href: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired
 };
 
 // A styled version of the Next.js Link component:
 // https://nextjs.org/docs/#with-link
 function Link(props) {
   const {
-    href,
     activeClassName = 'active',
     className: classNameProps,
+    href,
     innerRef,
     ...other
   } = props;

@@ -64,14 +64,14 @@ export default function Navbar() {
             </Link>
             <button
               className="block px-3 py-1 text-xl leading-none bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer lg:hidden focus:outline-none"
-              type="button"
               onClick={() => setOpen(!open)}
+              type="button"
             >
-              <svg viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8">
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
                 <path
-                  fillRule="evenodd"
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
                   clipRule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  fillRule="evenodd"
                 />
               </svg>
             </button>
@@ -81,7 +81,7 @@ export default function Navbar() {
             <ul className="flex flex-row ml-auto list-none">
               {MENU.map(menuItem =>
                 menuItem.button ? (
-                  <li key={menuItem.id} className="mx-2 last:mr-0 first:ml-0">
+                  <li className="mx-2 last:mr-0 first:ml-0" key={menuItem.id}>
                     <Link
                       className="flex items-center px-3 px-6 py-2 font-semibold leading-snug tracking-wider text-white text-yellow-700 transition-all duration-200 bg-white rounded-md hover:bg-yellow-900 hover:text-white hover:opacity-75"
                       href={menuItem.link}
@@ -90,7 +90,7 @@ export default function Navbar() {
                     </Link>
                   </li>
                 ) : (
-                  <li key={menuItem.id} className="mx-2 last:mr-0 first:ml-0">
+                  <li className="mx-2 last:mr-0 first:ml-0" key={menuItem.id}>
                     <Link
                       className="flex items-center px-3 py-2 leading-snug tracking-wider text-white hover:opacity-75"
                       href={menuItem.link}
@@ -107,16 +107,16 @@ export default function Navbar() {
             ({ item, props, key }) =>
               item && (
                 <animated.div
+                  className="absolute top-0 left-0 w-full mt-16 bg-white"
                   key={key}
                   style={props}
-                  className="absolute top-0 left-0 w-full mt-16 bg-white"
                 >
                   <ul className="container flex flex-col px-5 mx-auto list-none lg:flex-row lg:ml-auto">
                     {MENU.map(menuItem =>
                       menuItem.button ? (
                         <li
-                          key={menuItem.id}
                           className="flex items-center justify-center my-2"
+                          key={menuItem.id}
                         >
                           <Link
                             className="px-3 px-6 py-2 font-semibold leading-snug tracking-wider text-white transition-all duration-200 bg-white bg-yellow-700 rounded-md hover:bg-yellow-900 hover:text-white hover:opacity-75"
@@ -126,7 +126,7 @@ export default function Navbar() {
                           </Link>
                         </li>
                       ) : (
-                        <li key={menuItem.id} className="my-2">
+                        <li className="my-2" key={menuItem.id}>
                           <Link
                             className="flex items-center justify-center px-3 py-2 leading-snug tracking-wider text-yellow-700 hover:opacity-75"
                             href={menuItem.link}

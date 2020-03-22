@@ -36,7 +36,7 @@ const RegisterForm = ({ currentUrl }) => {
       setInvalidLogin(true);
       setErrorMessage(response.message);
     } else {
-      redirectTo(currentUrl || '/');
+      redirectTo(currentUrl || '/dashboard');
     }
   };
 
@@ -47,7 +47,7 @@ const RegisterForm = ({ currentUrl }) => {
       setInvalidLogin(true);
       setErrorMessage('Request not successful, please try again');
     } else {
-      redirectTo(currentUrl || '/');
+      redirectTo(currentUrl || '/dashboard');
     }
   };
 
@@ -59,7 +59,7 @@ const RegisterForm = ({ currentUrl }) => {
         setInvalidLogin(true);
         setErrorMessage('Request not successful, please try again');
       } else {
-        redirectTo(currentUrl || '/');
+        redirectTo(currentUrl || '/dashboard');
       }
     }
   };

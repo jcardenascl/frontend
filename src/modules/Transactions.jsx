@@ -1,5 +1,5 @@
 // Dependencies
-import React, { useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import propTypes from 'prop-types';
 
 // Contexts
@@ -8,9 +8,26 @@ import { TransactionContext } from '@contexts/transactions';
 // Actions
 import Read from '@actions/Read';
 
+// Components
+import { Loading } from '@components';
+
 const Home = ({ action = 'read', user, id = null, page }) => {
+  // States
+  const [loading, setLoading] = useState(true);
+
+  // Contexts
   const { readTransactions } = useContext(TransactionContext);
-  console.log(action, user);
+
+  // Effects
+  useEffect(() => {
+    setLoading(false);
+
+    return () => {
+      setLoading(true);
+    };
+  }, []);
+
+  if (loading) return <Loading />;
 
   if (action === 'read') {
     return (
@@ -18,8 +35,6 @@ const Home = ({ action = 'read', user, id = null, page }) => {
         module="transactions"
         caption="Transactions"
         read={readTransactions}
-        head={['Description', 'Ammount', 'Currency', 'Created At']}
-        body={['description', 'ammount', 'currency', 'createdAt']}
         page={page}
       />
     );
@@ -30,8 +45,6 @@ const Home = ({ action = 'read', user, id = null, page }) => {
       module="transactions"
       caption="Transactions"
       read={readTransactions}
-      head={['Description', 'Ammount', 'Currency', 'Created At']}
-      body={['description', 'ammount', 'currency', 'createdAt']}
       page={page}
     />
   );

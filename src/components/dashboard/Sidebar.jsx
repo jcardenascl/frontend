@@ -2,10 +2,10 @@
 import React from 'react';
 
 // Components
-import { Link } from '@components';
+import { Link, Fade } from '@components';
 
 export default () => (
-  <div className="px-4 py-6 bg-white m-h-screen md:w-1/4 lg:w-2/12">
+  <Fade className="px-4 py-6 bg-white m-h-screen md:w-1/4 lg:w-2/12">
     <ul>
       <li className="px-2">
         <Link
@@ -27,5 +27,5 @@ export default () => (
         </Link>
       </li>
     </ul>
-  </div>
+  </Fade>
 );
