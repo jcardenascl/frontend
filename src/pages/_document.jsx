@@ -15,6 +15,8 @@ class MyDocument extends Document {
         <Head />
         <body className="bg-gray-200">
           <Main />
+          {/* Modal Elements will show here */}
+          <div id="modal-root" />
           <NextScript />
         </body>
       </Html>
