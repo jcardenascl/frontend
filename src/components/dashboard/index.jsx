@@ -28,6 +28,7 @@ const Dashboard = () => {
 
   let loads = 0;
   let outflows = 0;
+  let totals = 0;
 
   // Effects
   useEffect(() => {
@@ -42,11 +43,15 @@ const Dashboard = () => {
         }
       });
 
+      totals = loads - Math.abs(outflows);
+
       const loadsElement = document.querySelector('[data-loads]');
       const outflowsElement = document.querySelector('[data-outflows]');
+      const totalsElement = document.querySelector('[data-totals]');
 
       loadsElement.innerHTML = formatMoney('USD', loads);
       outflowsElement.innerHTML = formatMoney('USD', outflows);
+      totalsElement.innerHTML = formatMoney('USD', totals);
     }
   }, [user]);
 
@@ -62,14 +67,14 @@ const Dashboard = () => {
           <div className="p-4 text-white bg-yellow-900">
             <NavbarDashboard user={user} />
 
-            <div className="grid grid-cols-1 gap-8 mb-48 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               <Fade>
                 <div className="px-6 py-4 bg-white rounded-lg shadow">
                   <h3 className="text-sm font-bold text-gray-500 uppercase">
                     Salary
                   </h3>
 
-                  <span className="text-3xl text-blue-500">
+                  <span className="text-3xl font-semibold text-blue-500">
                     {user && formatMoney('USD', user.salary)}
                   </span>
                 </div>
@@ -92,6 +97,20 @@ const Dashboard = () => {
                     Outflows
                   </h3>
                   <span className="text-3xl text-red-500" data-outflows>
+                    Loading
+                  </span>
+                </div>
+              </Fade>
+
+              <Fade>
+                <div className="px-6 py-4 bg-white rounded-lg shadow">
+                  <h3 className="text-sm font-bold text-gray-500 uppercase">
+                    Totals
+                  </h3>
+                  <span
+                    className="text-3xl font-semibold text-gray-900"
+                    data-totals
+                  >
                     Loading
                   </span>
                 </div>

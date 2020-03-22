@@ -27,7 +27,8 @@
     "airbnb",
     "plugin:prettier/recommended",
     "prettier/react",
-    "plugin:jest/recommended"
+    "plugin:jest/recommended",
+    "plugin:you-dont-need-momentjs/recommended"
   ],
   "rules": {
     "accessor-pairs": 2,
