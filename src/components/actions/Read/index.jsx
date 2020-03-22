@@ -4,10 +4,9 @@ import propTypes from 'prop-types';
 import { format } from 'date-fns';
 import { PencilOutlineMd, TrashOutlineMd } from 'react-heroicons';
 import Tippy from '@tippyjs/react';
-import { BottomModal } from 'react-spring-modal';
 
 // Components
-import { Fade, Pagination } from '@components';
+import { Fade, Pagination, CreateTransactionModal } from '@components';
 
 // Utils
 import formatMoney from '@utils/money';
@@ -44,7 +43,7 @@ const Read = ({ read, page, module, caption }) => {
         <button
           type="button"
           // href={`/dashboard/${module}/create`}
-          className="block px-6 py-2 text-white bg-yellow-900 rounded-lg shadow"
+          className="block px-6 py-2 text-white bg-yellow-900 rounded-lg shadow focus:outline-none"
           onClick={() => setOpen(!isOpen)}
         >
           Create
@@ -115,9 +114,7 @@ const Read = ({ read, page, module, caption }) => {
         />
       </Fade>
 
-      <BottomModal isOpen={isOpen} onRequestClose={() => setOpen(false)}>
-        <h1>The Modal</h1>
-      </BottomModal>
+      <CreateTransactionModal open={isOpen} setOpen={setOpen} />
     </>
   );
 };

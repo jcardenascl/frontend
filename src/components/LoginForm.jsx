@@ -241,8 +241,6 @@ LoginForm.defaultProps = {
 };
 
 LoginForm.propTypes = {
-  // eslint-disable-next-line
-  createUser: propTypes.func,
   currentUrl: propTypes.string
 };
 

@@ -12,6 +12,7 @@ export { default as Link } from './Link';
 // Forms
 export { default as LoginForm } from './LoginForm';
 export { default as RegisterForm } from './RegisterForm';
+export { default as TransactionForm } from './TransactionForm';
 
 // Advanced layout
 export { default as Hero } from './Hero';
@@ -19,6 +20,7 @@ export { default as Alert } from './Alert';
 export { default as Table } from './Table';
 export { default as Pagination } from './Pagination';
 export { default as Fade } from './Fade';
+export { default as CreateTransactionModal } from './CreateTransactionModal';
 
 // Dashboard
 export { default as Dashboard } from './dashboard';
