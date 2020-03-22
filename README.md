@@ -1,7 +1,11 @@
 <h1 align="center">Welcome to Expense Tracker Frontend 👋</h1>
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/expensetrackerofficial/" target="_blank">
@@ -32,6 +36,7 @@ npm install
 ```sh
 npm run dev
 ```
+
 ## Run tests
 
 ```sh
@@ -48,10 +53,10 @@ npm test -- --watch
 
 👤 **Daniel Esteves <estevesd8@gmail.com>**
 
-* Website: https://danestves.com/
-* Twitter: [@danestves](https://twitter.com/danestves)
-* Github: [@danestves](https://github.com/danestves)
-* LinkedIn: [@danestves](https://linkedin.com/in/danestves)
+- Website: https://danestves.com/
+- Twitter: [@danestves](https://twitter.com/danestves)
+- Github: [@danestves](https://github.com/danestves)
+- LinkedIn: [@danestves](https://linkedin.com/in/danestves)
 
 ## 🤝 Contributing
 
@@ -73,6 +78,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
@@ -90,5 +96,6 @@ Give a ⭐️ if this project helped you!
 Copyright © 2020 [Daniel Esteves <estevesd8@gmail.com>](https://github.com/danestves).<br />
 This project is [MIT](https://github.com/expensetrackerofficial/frontend/blob/master/LICENSE) licensed.
 
-***
+---
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
