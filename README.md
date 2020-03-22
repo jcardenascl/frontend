@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to Expense Tracker Frontend 👋</h1>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
@@ -71,6 +71,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://danestves.com/"><img src="https://avatars0.githubusercontent.com/u/31737273?v=4" width="100px;" alt=""/><br /><sub><b>Daniel Esteves</b></sub></a><br /><a href="https://github.com/expensetrackerofficial/frontend/commits?author=danestves" title="Code">💻</a> <a href="#design-danestves" title="Design">🎨</a> <a href="#maintenance-danestves" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/gpincheiraa"><img src="https://avatars0.githubusercontent.com/u/5608336?v=4" width="100px;" alt=""/><br /><sub><b>Gonzalo Pincheira Arancibia</b></sub></a><br /><a href="https://github.com/expensetrackerofficial/frontend/commits?author=gpincheiraa" title="Code">💻</a> <a href="https://github.com/expensetrackerofficial/frontend/commits?author=gpincheiraa" title="Tests">⚠️</a></td>
   </tr>
 </table>
 
