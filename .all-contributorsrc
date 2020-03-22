@@ -15,6 +15,16 @@
         "design",
         "maintenance"
       ]
+    },
+    {
+      "login": "gpincheiraa",
+      "name": "Gonzalo Pincheira Arancibia",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/5608336?v=4",
+      "profile": "https://github.com/gpincheiraa",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
