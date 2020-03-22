@@ -9,21 +9,19 @@ import FormProvider from '@contexts/form';
 // Components
 import { TransactionForm } from '@components';
 
-const Transaction = ({ open, setOpen }) => {
-  return (
-    <BottomModal isOpen={open} onRequestClose={() => setOpen(false)}>
-      <FormProvider
-        initialValues={{
-          description: '',
-          ammount: '',
-          currency: 'USD'
-        }}
-      >
-        <TransactionForm setOpenModal={setOpen} />
-      </FormProvider>
-    </BottomModal>
-  );
-};
+const Transaction = ({ open, setOpen }) => (
+  <BottomModal isOpen={open} onRequestClose={() => setOpen(false)}>
+    <FormProvider
+      initialValues={{
+        description: '',
+        ammount: '',
+        currency: 'USD'
+      }}
+    >
+      <TransactionForm setOpenModal={setOpen} />
+    </FormProvider>
+  </BottomModal>
+);
 
 Transaction.propTypes = {
   open: propTypes.bool.isRequired,

@@ -38,6 +38,7 @@ const Transaction = ({ id, title }) => {
     }
   };
 
+  // Render
   return (
     <>
       <Tippy content="Delete">

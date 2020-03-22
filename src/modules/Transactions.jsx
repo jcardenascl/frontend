@@ -21,6 +21,10 @@ const Home = ({ action = 'read', user, id = null, page }) => {
   // Effects
   useEffect(() => {
     setLoading(false);
+
+    return () => {
+      setLoading(true);
+    };
   }, []);
 
   if (loading) return <Loading />;

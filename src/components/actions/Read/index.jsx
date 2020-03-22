@@ -17,23 +17,15 @@ import {
 // Utils
 import formatMoney from '@utils/money';
 
-// Hooks
-import { useMounted } from '@hooks';
-
 const Read = ({ read, page, module, caption }) => {
   // States
   const [count, setCount] = useState(0);
   const [data, setData] = useState([]);
   const [isOpen, setOpen] = useState(false);
-  const mounted = useMounted();
 
   // Methods
-  const fetchData = async pageNumber => {
-    let res;
-
-    if (mounted) {
-      res = await read(Number(pageNumber));
-    }
+  const fetchData = async () => {
+    const res = await read(Number(page));
 
     setCount(res.count);
     setData(res.data);
@@ -41,11 +33,11 @@ const Read = ({ read, page, module, caption }) => {
 
   // Effects
   useEffect(() => {
-    fetchData(page);
+    fetchData();
   }, [data, page]);
 
   // Render
-  if (data.length === 0) return <Loading />;
+  if (data.length === 0) return <Loading spacing="py-16" />;
 
   return (
     <>
