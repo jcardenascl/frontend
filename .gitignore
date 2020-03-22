@@ -53,7 +53,9 @@ jspm_packages
 
 # misc
 .DS_Store
-.env*
+.env
+.env.production
+.env.development
 
 # debug
 npm-debug.log*
