@@ -29,6 +29,17 @@ npm install
 ```sh
 npm run dev
 ```
+## Run tests
+
+```sh
+npm test
+```
+
+in watch mode!
+
+```sh
+npm test -- --watch
+```
 
 ## Author
 

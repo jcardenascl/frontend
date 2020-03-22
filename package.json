@@ -17,6 +17,13 @@
     "nextjs"
   ],
   "author": "Daniel Esteves <estevesd8@gmail.com>",
+  "contributors": [
+    {
+      "name": "Gonzalo Pincheira",
+      "email": "g.pincheira.a@gmail.com",
+      "url": "https://github.com/gpincheiraa"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.9.0",
