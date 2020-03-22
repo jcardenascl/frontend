@@ -9,7 +9,7 @@ import GET_TRANSACTIONS_COUNT_QUERY from '@graphql/transactions/transactionsCoun
 import GET_TRANSACTIONS_QUERY from '@graphql/transactions/transactions.query';
 
 // Mutations
-import CREATE_TRANSACTION_MUTATION from '@graphql/user/user.mutation';
+import CREATE_TRANSACTION_MUTATION from '@graphql/transactions/transaction.mutation';
 
 export const TransactionContext = createContext({
   createTransaction: () => undefined,
@@ -23,12 +23,14 @@ const TransactionProvider = ({ children }) => {
   async function createTransaction({ description, ammount, currency = 'USD' }) {
     let transaction;
 
+    const ammountNumber = parseInt(ammount, 10);
+
     try {
       const { data } = await mutate({
         mutation: CREATE_TRANSACTION_MUTATION,
         variables: {
           description,
-          ammount,
+          ammount: ammountNumber,
           currency
         }
       });

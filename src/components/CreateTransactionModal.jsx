@@ -16,10 +16,10 @@ const Transaction = ({ open, setOpen }) => {
         initialValues={{
           description: '',
           ammount: '',
-          currency: ''
+          currency: 'USD'
         }}
       >
-        <TransactionForm />
+        <TransactionForm setOpenModal={setOpen} />
       </FormProvider>
     </BottomModal>
   );

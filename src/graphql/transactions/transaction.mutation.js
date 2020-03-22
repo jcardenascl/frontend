@@ -2,9 +2,17 @@
 import { gql } from 'apollo-boost';
 
 export default gql`
-  mutation transaction($description: String!, $ammount: Int!, currency: String!) {
+  mutation transaction(
+    $description: String!
+    $ammount: Int!
+    $currency: Currency!
+  ) {
     transaction(
-      input: { description: $description, ammount: $ammount, currency: $currency }
+      input: {
+        description: $description
+        ammount: $ammount
+        currency: $currency
+      }
     ) {
       id
       description

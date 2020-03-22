@@ -1,9 +1,14 @@
 // Dependencies
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Select from 'react-select';
+import propTypes from 'prop-types';
 
 // Contexts
 import { FormContext } from '@contexts/form';
+import { TransactionContext } from '@contexts/transactions';
+
+// Components
+import { Alert } from '@components';
 
 const options = [
   { value: 'USD', label: 'USD', selected: true },
@@ -76,12 +81,41 @@ const customStyles = {
   })
 };
 
-const TransactionForm = () => {
+const TransactionForm = ({ setOpenModal }) => {
+  // States
+  const [errorMessage, setErrorMessage] = useState('');
+  const [invalidCreate, setInvalidCreate] = useState(false);
+
   // Contexts
-  const { handleInputChange, values } = useContext(FormContext);
+  const { handleInputChange, values, clearValues } = useContext(FormContext);
+  const { createTransaction } = useContext(TransactionContext);
+
+  // Methods
+  const handleChangeSelect = (value, action) => {
+    handleInputChange({ target: { name: action.name, value: value.value } });
+  };
+
+  const handleCreate = async transaction => {
+    console.log(transaction);
+    const response = await createTransaction(transaction);
+
+    if (response.error) {
+      setInvalidCreate(true);
+      setErrorMessage(response.message);
+    } else {
+      clearValues(['description', 'ammount', 'currency']);
+      setOpenModal(false);
+    }
+  };
 
   return (
     <div>
+      <Alert
+        message={errorMessage}
+        open={invalidCreate}
+        onClose={setInvalidCreate}
+      />
+
       <h2 className="pb-2 mb-6 text-2xl font-bold text-center text-gray-700 border-b">
         New Transaction
       </h2>
@@ -132,7 +166,7 @@ const TransactionForm = () => {
 
         <Select
           defaultValue={options[0]}
-          id="currency"
+          onChange={handleChangeSelect}
           name="currency"
           menuPlacement="auto"
           options={options}
@@ -144,12 +178,21 @@ const TransactionForm = () => {
         <button
           className="block w-full px-6 py-2 text-white bg-yellow-900 rounded shadow focus:outline-none"
           type="button"
+          onClick={() => handleCreate(values)}
         >
           Save
         </button>
       </div>
     </div>
   );
+};
+
+TransactionForm.defaultProps = {
+  setOpenModal: () => undefined
+};
+
+TransactionForm.propTypes = {
+  setOpenModal: propTypes.func
 };
 
 export default TransactionForm;

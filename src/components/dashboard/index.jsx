@@ -108,7 +108,7 @@ const Dashboard = () => {
                     Totals
                   </h3>
                   <span
-                    className="text-3xl font-semibold text-gray-900"
+                    className="text-3xl font-semibold text-orange-500"
                     data-totals
                   >
                     Loading
