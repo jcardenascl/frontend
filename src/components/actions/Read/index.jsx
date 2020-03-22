@@ -22,6 +22,7 @@ const Read = ({ read, page, module, caption }) => {
   const [count, setCount] = useState(0);
   const [data, setData] = useState([]);
   const [isOpen, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // Methods
   const fetchData = async () => {
@@ -34,10 +35,14 @@ const Read = ({ read, page, module, caption }) => {
 
   // Effects
   useEffect(() => {
-    fetchData();
-  }, [data, page, isOpen]);
+    fetchData().then(() => {
+      setLoading(false);
+    });
+  }, [data, page, loading]);
 
   // Render
+  if (loading) return <Loading spacing="py-32" />;
+
   return (
     <>
       <div className="flex items-center justify-between mb-6">
@@ -57,7 +62,7 @@ const Read = ({ read, page, module, caption }) => {
 
       <hr className="mb-6 border-gray-300" />
 
-      {data.length !== 0 && (
+      {data.length !== 0 ? (
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {data.map(item => (
             <Fade key={item.id}>
@@ -93,8 +98,7 @@ const Read = ({ read, page, module, caption }) => {
                     <DeleteTransactionModal
                       id={item.id}
                       title={item.description}
-                      page={page}
-                      fetchData={fetchData}
+                      setLoading={setLoading}
                     />
                   </div>
                 </div>
@@ -102,6 +106,8 @@ const Read = ({ read, page, module, caption }) => {
             </Fade>
           ))}
         </div>
+      ) : (
+        <Loading className="py-16" />
       )}
 
       <Fade>
@@ -115,8 +121,7 @@ const Read = ({ read, page, module, caption }) => {
       <CreateTransactionModal
         open={isOpen}
         setOpen={setOpen}
-        data={data}
-        setData={setData}
+        setLoading={setLoading}
       />
     </>
   );

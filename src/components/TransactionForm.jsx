@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react';
 import Select from 'react-select';
 import propTypes from 'prop-types';
 import toaster from 'toasted-notes';
+import { useRouter } from 'next/router';
 
 // Contexts
 import { FormContext } from '@contexts/form';
@@ -82,10 +83,11 @@ const customStyles = {
   })
 };
 
-const TransactionForm = ({ setOpenModal }) => {
+const TransactionForm = ({ setOpenModal, setLoading }) => {
   // States
   const [errorMessage, setErrorMessage] = useState('');
   const [invalidCreate, setInvalidCreate] = useState(false);
+  const router = useRouter();
 
   // Contexts
   const { handleInputChange, values, clearValues } = useContext(FormContext);
@@ -107,6 +109,7 @@ const TransactionForm = ({ setOpenModal }) => {
     } else {
       clearValues(['description', 'ammount', 'currency']);
       setOpenModal(false);
+      setLoading(true);
 
       toaster.notify(
         <Toast
@@ -119,6 +122,8 @@ const TransactionForm = ({ setOpenModal }) => {
           duration: 5000
         }
       );
+
+      router.replace('/dashboard/transactions');
     }
   };
 
@@ -206,7 +211,8 @@ TransactionForm.defaultProps = {
 };
 
 TransactionForm.propTypes = {
-  setOpenModal: propTypes.func
+  setOpenModal: propTypes.func,
+  setLoading: propTypes.func.isRequired
 };
 
 export default TransactionForm;

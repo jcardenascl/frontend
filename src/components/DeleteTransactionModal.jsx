@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 import { CenterModal } from 'react-spring-modal';
 import { TrashOutlineMd } from 'react-heroicons';
 import Tippy from '@tippyjs/react';
+import { useRouter } from 'next/router';
 
 // Contexts
 import { TransactionContext } from '@contexts/transactions';
@@ -11,12 +12,13 @@ import { TransactionContext } from '@contexts/transactions';
 // Components
 import { Alert } from '@components';
 
-const Transaction = ({ id, title, fetchData }) => {
+const Transaction = ({ id, title, setLoading }) => {
   // States
   const [openDelete, setDelete] = useState(false);
   const [text, setText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [invalidDelete, setInvalidDelete] = useState(false);
+  const router = useRouter();
 
   // Contexts
   const { deleteTransaction } = useContext(TransactionContext);
@@ -35,7 +37,9 @@ const Transaction = ({ id, title, fetchData }) => {
     } else {
       setText('');
       setDelete(false);
-      fetchData();
+      setLoading(true);
+
+      router.push('/dashboard/transactions');
     }
   };
 
@@ -112,7 +116,7 @@ const Transaction = ({ id, title, fetchData }) => {
 Transaction.propTypes = {
   id: propTypes.string.isRequired,
   title: propTypes.string.isRequired,
-  fetchData: propTypes.func.isRequired
+  setLoading: propTypes.func.isRequired
 };
 
 export default Transaction;
