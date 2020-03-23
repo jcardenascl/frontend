@@ -15,10 +15,18 @@ const Home = ({ action }) => {
 
   // Refs
   const chartRef = createRef();
-  const loads = [];
-  const loadsDates = [];
-  const outflows = [];
-  const outflowsDates = [];
+  const loads = [300, 350, 350];
+  const loadsDates = [
+    format(new Date('2020-03-21T04:07:09.210+00:00'), 'MMMM'),
+    format(new Date('2020-03-22T04:07:09.210+00:00'), 'MMMM'),
+    format(new Date('2020-03-23T04:07:09.210+00:00'), 'MMMM')
+  ];
+  const outflows = [-100, -50, -50];
+  const outflowsDates = [
+    format(new Date('2020-03-21T04:07:09.210+00:00'), 'MMMM'),
+    format(new Date('2020-03-22T04:07:09.210+00:00'), 'MMMM'),
+    format(new Date('2020-03-23T04:07:09.210+00:00'), 'MMMM')
+  ];
 
   // Effects
   // useEffect(() => {
@@ -49,17 +57,17 @@ const Home = ({ action }) => {
     new Chart(myChartRef, {
       type: 'line',
       data: {
-        labels: ['March'],
+        labels: [...outflowsDates, ...loadsDates],
         datasets: [
           {
             label: 'Outflows',
-            data: [100, 30],
+            data: outflows,
             backgroundColor: 'rgba(229, 62, 62, 0.5)',
             borderColor: 'rgb(229, 62, 62)'
           },
           {
             label: 'Loads',
-            data: [300, 350],
+            data: loads,
             backgroundColor: 'rgba(56, 161, 105, 0.5)',
             borderColor: 'rgb(56, 161, 105)'
           }
