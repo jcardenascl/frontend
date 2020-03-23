@@ -15,63 +15,62 @@ const Home = ({ action }) => {
 
   // Refs
   const chartRef = createRef();
-  let loads = [];
-  let loadsDates = [];
-  let outflows = [];
-  let outflowsDates = [];
+  const loads = [];
+  const loadsDates = [];
+  const outflows = [];
+  const outflowsDates = [];
 
   // Effects
+  // useEffect(() => {
+  //   if (user) {
+  //     const { transactions } = user;
+
+  //     transactions.forEach(item => {
+  //       if (item.ammount < 0) {
+  //         outflows = [...outflows, item.ammount];
+  //         outflowsDates = [
+  //           ...outflowsDates,
+  //           format(new Date(item.createdAt), 'MMMM')
+  //         ];
+  //       } else {
+  //         loads = [...loads, item.ammount];
+  //         loadsDates = [
+  //           ...loadsDates,
+  //           format(new Date(item.createdAt), 'MMMM')
+  //         ];
+  //       }
+  //     });
+  //   }
+  // }, [user]);
+
   useEffect(() => {
-    if (user) {
-      const { transactions } = user;
+    const myChartRef = chartRef.current.getContext('2d');
 
-      transactions.forEach(item => {
-        if (item.ammount < 0) {
-          outflows = [...outflows, item.ammount];
-          outflowsDates = [
-            ...outflowsDates,
-            format(new Date(item.createdAt), 'MMMM')
-          ];
-        } else {
-          loads = [...loads, item.ammount];
-          loadsDates = [
-            ...loadsDates,
-            format(new Date(item.createdAt), 'MMMM')
-          ];
-        }
-      });
-    }
-  }, [user]);
+    new Chart(myChartRef, {
+      type: 'line',
+      data: {
+        labels: ['March'],
+        datasets: [
+          {
+            label: 'Outflows',
+            data: [100, 30],
+            backgroundColor: 'rgba(229, 62, 62, 0.5)',
+            borderColor: 'rgb(229, 62, 62)'
+          },
+          {
+            label: 'Loads',
+            data: [300, 350],
+            backgroundColor: 'rgba(56, 161, 105, 0.5)',
+            borderColor: 'rgb(56, 161, 105)'
+          }
+        ]
+      },
+      options: {}
+    });
+  }, []);
 
-  useEffect(() => {
-    if (user) {
-      const myChartRef = chartRef.current.getContext('2d');
+  // if (!user) return <Loading spacing="py-32" />;
 
-      new Chart(myChartRef, {
-        type: 'line',
-        data: {
-          labels: ['March'],
-          datasets: [
-            {
-              label: 'Loads',
-              data: loads,
-              backgroundColor: '#48bb78'
-            },
-            {
-              label: 'Outflows',
-              data: outflows,
-              backgroundColor: '#f56565'
-            }
-          ]
-        },
-        options: {}
-      });
-    }
-  }, [user]);
-
-  if (!user) return <Loading spacing="py-32" />;
-
-  console.log(loads, outflows);
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2">
       <div>
