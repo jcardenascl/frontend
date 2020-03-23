@@ -16,6 +16,7 @@ export default gql`
         description
         ammount
         currency
+        createdAt
       }
     }
   }

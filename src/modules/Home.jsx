@@ -1,26 +1,93 @@
 // Dependencies
-import React from 'react';
+import React, { createRef, useEffect, useContext } from 'react';
 import propTypes from 'prop-types';
+import Chart from 'chart.js';
+import { format } from 'date-fns';
 
-const Home = ({ action, user }) => {
-  console.log(action, user);
+// Contexts
+import { UserContext } from '@contexts/user';
 
-  return <h2>Dashboard Home</h2>;
+// Components
+import { Loading } from '@components';
+
+const Home = ({ action }) => {
+  const { user } = useContext(UserContext);
+
+  // Refs
+  const chartRef = createRef();
+  let loads = [];
+  let loadsDates = [];
+  let outflows = [];
+  let outflowsDates = [];
+
+  // Effects
+  useEffect(() => {
+    if (user) {
+      const { transactions } = user;
+
+      transactions.forEach(item => {
+        if (item.ammount < 0) {
+          outflows = [...outflows, item.ammount];
+          outflowsDates = [
+            ...outflowsDates,
+            format(new Date(item.createdAt), 'MMMM')
+          ];
+        } else {
+          loads = [...loads, item.ammount];
+          loadsDates = [
+            ...loadsDates,
+            format(new Date(item.createdAt), 'MMMM')
+          ];
+        }
+      });
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      const myChartRef = chartRef.current.getContext('2d');
+
+      new Chart(myChartRef, {
+        type: 'line',
+        data: {
+          labels: ['March'],
+          datasets: [
+            {
+              label: 'Loads',
+              data: loads,
+              backgroundColor: '#48bb78'
+            },
+            {
+              label: 'Outflows',
+              data: outflows,
+              backgroundColor: '#f56565'
+            }
+          ]
+        },
+        options: {}
+      });
+    }
+  }, [user]);
+
+  if (!user) return <Loading spacing="py-32" />;
+
+  console.log(loads, outflows);
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2">
+      <div>
+        <canvas id="myChart" ref={chartRef} />
+      </div>
+      <div>a</div>
+    </div>
+  );
 };
 
 Home.defaultProps = {
-  action: '',
-  user: {}
+  action: ''
 };
 
 Home.propTypes = {
-  action: propTypes.string,
-  user: propTypes.shape({
-    id: propTypes.string,
-    username: propTypes.string,
-    email: propTypes.string,
-    token: propTypes.string
-  })
+  action: propTypes.string
 };
 
 export default Home;
