@@ -11,6 +11,7 @@ import { Dashboard } from '@components';
 
 // Contexts
 import UserProvider from '@contexts/user';
+import TransactionsProvider from '@contexts/transactions';
 
 const Home = props => {
   // Cookies
@@ -19,7 +20,9 @@ const Home = props => {
   return (
     <ApolloProvider client={useApolloClient(cookies.at)}>
       <UserProvider>
-        <Dashboard {...props} />
+        <TransactionsProvider>
+          <Dashboard {...props} />
+        </TransactionsProvider>
       </UserProvider>
     </ApolloProvider>
   );
