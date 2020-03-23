@@ -1,14 +1,14 @@
-require("dotenv").config()
+require('dotenv').config();
 
 export default {
   serverPort: 3000,
-  appName: "Expense Tracker",
+  appName: 'Expense Tracker',
   languages: {
-    default: "es",
-    list: ["es", "en"],
+    default: 'es',
+    list: ['es', 'en']
   },
   security: {
     secretKey: process.env.SECRET_KEY,
-    expiresIn: process.env.EXPIRES_IN,
-  },
-}
+    expiresIn: process.env.EXPIRES_IN
+  }
+};
