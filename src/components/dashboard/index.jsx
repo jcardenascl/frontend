@@ -102,7 +102,7 @@ const Dashboard = () => {
             <Fade>
               <div className="px-6 py-4 bg-white rounded-lg shadow">
                 <h3 className="text-sm font-bold text-gray-500 uppercase">
-                  Totals
+                  Total
                 </h3>
                 <span
                   className="text-3xl font-semibold text-orange-500"
